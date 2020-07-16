@@ -1,0 +1,48 @@
+/*** colors***/
+$primary-color: #000;
+$secondary-color: #fff;
+$third-color: #767676;
+$dark-grey: #212121;
+
+/*** font-familys ***/
+$arial: Arial, Helvetica, sans-serif;
+
+/*** font-weights ***/
+$font-weight--light: 300;
+$font-weight--medium: 500;
+$font-weight--black: 900;
+
+html,
+body {
+  background: $primary-color;
+  color: $secondary-color;
+  width: 100%;
+  min-height: 100vh;
+  font-size: 100%;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang TC', 'Segoe UI',
+    'Noto Sans TC', Roboto, Ubuntu, 'Helvetica Neue', Helvetica, Arial,
+    'Source Han Sans TC', sans-serif;
+  // -apple-system,       /* iOS Safari, macOS Safari, macOS Firefox */
+  // BlinkMacSystemFont,  /* macOS Chrome */
+  // 'PingFang TC',       /* 蘋方 */
+  // 'Segoe UI',          /* Windows, Windows Phone */
+  // 'Noto Sans TC',      /* Google: 思源黑體 */
+  // Roboto,              /* Google: Android, Chrome OS */
+  // Ubuntu,              /* Linux: Ubanto */
+  // 'Helvetica Neue'     /* OS X pre-EI Capitan */
+  // Helvetica,
+  // Arial,               /* Windows 3.1 */
+  // 'Source Han Sans TC' /* Google: 思源黑體 */
+  // sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

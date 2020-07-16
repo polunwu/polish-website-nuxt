@@ -1,6 +1,6 @@
 <template>
-  <div class="container">
-    <h1>Home</h1>
+  <div>
+    <h1>shiftstudioco</h1>
   </div>
 </template>
 
@@ -8,4 +8,4 @@
 export default {}
 </script>
 
-<style></style>
+<style lang="scss" scoped></style>
