@@ -10,8 +10,13 @@
       <i class="menu-trigger__bar menu-trigger__bar--middle"></i>
       <i class="menu-trigger__bar menu-trigger__bar--bottom"></i>
     </div>
+    <div class="top" @click="scrollTop">
+      <a>
+        <span>TOP</span>
+      </a>
+    </div>
     <div class="arrow">
-      <a href="">
+      <a>
         <img src="~/assets/images/header_arrow.svg" alt="header-arrow" />
       </a>
     </div>
@@ -19,7 +24,17 @@
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    scrollTop() {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })
+    },
+  },
+}
 </script>
 
 <style lang="scss" scoped>
@@ -39,6 +54,19 @@ nav {
     left: 18px;
     width: 76px;
     height: 45px;
+  }
+}
+.top {
+  position: fixed;
+  right: 33px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  font-weight: $font-weight--black;
+  writing-mode: vertical-rl;
+
+  @media screen and (max-width: 767px) {
+    display: none;
   }
 }
 .arrow {

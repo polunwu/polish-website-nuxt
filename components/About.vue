@@ -58,13 +58,10 @@ export default {}
 <style lang="scss" scoped>
 .about {
   text-align: center;
-  padding-left: 22px;
-  padding-right: 22px;
-  padding-bottom: 0px;
+  padding: 20px 22px 0px 22px;
 
   @media screen and (max-width: 414px) {
-    padding-left: 11px;
-    padding-right: 11px;
+    padding: 11px 11px 0px 11px;
   }
 
   &__wrapper {
@@ -124,6 +121,9 @@ export default {}
     }
     @media screen and (max-width: 767px) {
       padding-bottom: 49px;
+    }
+    @media screen and (max-width: 414px) {
+      padding-bottom: 8px;
     }
 
     .record__score {
