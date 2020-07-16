@@ -1,7 +1,5 @@
 <template>
-  <div class="container">
-    <h1>Home</h1>
-  </div>
+  <div class="container"></div>
 </template>
 
 <script>
