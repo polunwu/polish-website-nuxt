@@ -41,7 +41,7 @@
       </div>
     </div>
     <div class="footer__bottom">
-      <p>© Polish Design TW. All rights reserved 2020.</p>
+      <p>© Polish Design TW</p>
     </div>
   </footer>
 </template>

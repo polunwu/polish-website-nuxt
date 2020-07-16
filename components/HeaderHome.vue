@@ -47,6 +47,10 @@ export default {}
     writing-mode: vertical-rl;
 
     mix-blend-mode: difference;
+
+    @media screen and (max-width: 414px) {
+      left: 18px;
+    }
   }
   .email > a {
     text-decoration: none;

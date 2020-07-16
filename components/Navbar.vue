@@ -33,12 +33,23 @@ nav {
   left: 35px;
   width: 94px;
   height: 55px;
+
+  @media screen and (max-width: 414px) {
+    top: 18px;
+    left: 18px;
+    width: 76px;
+    height: 45px;
+  }
 }
 .arrow {
   position: fixed;
   right: 38px;
   bottom: 40px;
   animation: arrow_fade_down 1.5s cubic-bezier(0.33, 1, 0.68, 1) infinite;
+
+  @media screen and (max-width: 414px) {
+    right: 18px;
+  }
 }
 @keyframes arrow_fade_down {
   0% {
@@ -80,6 +91,11 @@ nav {
 
   &__bar--bottom {
     margin: 0px;
+  }
+
+  @media screen and (max-width: 414px) {
+    top: 19px;
+    right: 14px;
   }
 }
 </style>
