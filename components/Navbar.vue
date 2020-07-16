@@ -10,9 +10,6 @@
       <i class="menu-trigger__bar menu-trigger__bar--middle"></i>
       <i class="menu-trigger__bar menu-trigger__bar--bottom"></i>
     </div>
-    <div class="email">
-      <a href="mailto:Hello@polish-design.com">Hello@polish-design.com</a>
-    </div>
     <div class="arrow">
       <a href="">
         <img src="~/assets/images/header_arrow.svg" alt="header-arrow" />
@@ -26,25 +23,16 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
+nav {
+  position: fixed;
+  z-index: 2;
+}
 .logo {
   position: fixed;
   top: 32px;
   left: 35px;
   width: 94px;
   height: 55px;
-}
-.email {
-  position: fixed;
-  left: 34px;
-  bottom: 33px;
-  color: $secondary-color;
-  font-size: 15px;
-  writing-mode: vertical-rl;
-
-  mix-blend-mode: difference;
-}
-.email > a {
-  text-decoration: none;
 }
 .arrow {
   position: fixed;

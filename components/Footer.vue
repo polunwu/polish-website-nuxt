@@ -7,7 +7,11 @@
       </div>
       <div class="footer__messenger">
         <p>With Messenger</p>
-        <a href="/" class="messenger__link" target="_blank">
+        <a
+          href="http://m.me/polishdesigntw"
+          class="messenger__link"
+          target="_blank"
+        >
           <img src="~/assets/images/msg.png" alt="Messenger" />
         </a>
       </div>
@@ -20,10 +24,18 @@
       <div class="footer__follow-us">
         <h3>Follow Us</h3>
         <p>關注我們的 Insta & Facebook</p>
-        <a href="/" class="social__link social__link--fb">
+        <a
+          href="https://www.facebook.com/polishdesigntw/"
+          class="social__link social__link--fb"
+          target="_blank"
+        >
           <img src="~/assets/images/social_fb.svg" alt="Facebook" />
         </a>
-        <a href="/" class="social__link social__link--ig">
+        <a
+          href="https://www.instagram.com/polishdesigntw/"
+          class="social__link social__link--ig"
+          target="_blank"
+        >
           <img src="~/assets/images/social_ig.svg" alt="Instagram" />
         </a>
       </div>
