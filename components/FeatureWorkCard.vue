@@ -3,7 +3,7 @@
     <nuxt-link :to="/work/ + work.name" class="feature-work__thumbnail-wrapper">
       <div
         class="feature-work__thumbnail"
-        :style="{ backgroundImage: `url(${work.imageURL})` }"
+        :style="{ backgroundImage: `url(${work.thumbnailImageUrl})` }"
       ></div>
     </nuxt-link>
     <div class="feature-work__content">

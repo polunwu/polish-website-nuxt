@@ -27,7 +27,7 @@ export default {
           category: 'Website',
           client: 'Shift Studio 轉轉影像',
           keywords: 'Work Display',
-          imageURL: 'https://via.placeholder.com/615x346',
+          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
         },
         {
           id: 2,
@@ -37,7 +37,7 @@ export default {
           category: 'Website',
           client: 'Wassup 挖砂貓砂',
           keywords: 'Landing Page',
-          imageURL: 'https://via.placeholder.com/615x346',
+          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
         },
         {
           id: 3,
@@ -47,7 +47,7 @@ export default {
           category: 'Website',
           client: '永齡基金會 Trans',
           keywords: 'Information & Action',
-          imageURL: 'https://via.placeholder.com/615x346',
+          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
         },
         {
           id: 4,
@@ -57,7 +57,7 @@ export default {
           category: 'Website',
           client: 'Legere 里格',
           keywords: 'Reservation guide',
-          imageURL: 'https://via.placeholder.com/615x346',
+          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
         },
         {
           id: 5,
@@ -67,7 +67,7 @@ export default {
           category: 'System',
           client: 'Zuker',
           keywords: 'System',
-          imageURL: 'https://via.placeholder.com/615x346',
+          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
         },
         {
           id: 6,
@@ -77,7 +77,7 @@ export default {
           category: 'Website',
           client: '沙西米 RawNFresh',
           keywords: 'Video Display',
-          imageURL: 'https://via.placeholder.com/615x346',
+          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
         },
       ],
     }
