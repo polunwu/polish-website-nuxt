@@ -16,7 +16,9 @@
       <Paragraph :content="work.content[1]" />
       <FullWidthImage :url="work.fullWidthImageUrl[1]" />
       <SeeMore :link="work.link" />
+      <TechScope :scopes="work.scopes" />
     </div>
+    <Members />
   </div>
 </template>
 
@@ -27,6 +29,8 @@ import Quote from '@/components/Quote.vue'
 import ParagraphImage from '@/components/ParagraphImage.vue'
 import FullWidthImage from '@/components/FullWidthImage.vue'
 import SeeMore from '@/components/SeeMore.vue'
+import TechScope from '@/components/TechScope.vue'
+import Members from '@/components/Members.vue'
 
 export default {
   components: {
@@ -36,6 +40,8 @@ export default {
     ParagraphImage,
     FullWidthImage,
     SeeMore,
+    TechScope,
+    Members,
   },
   data() {
     return {
@@ -65,6 +71,16 @@ export default {
           job: 'Polish Design Art Director',
         },
         link: 'www.shiftstudioco.com',
+        scopes: {
+          branding: ['品牌形象規劃', '品牌色彩計畫', '品牌視覺識別'],
+          design: [
+            '藝術指導',
+            '視覺情境版',
+            '使用者體驗（UX）',
+            '使用者介面設計（UI）',
+          ],
+          development: ['使用者故事', '使用者體驗（UX）'],
+        },
       },
     }
   },
