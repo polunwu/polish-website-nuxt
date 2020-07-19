@@ -14,3 +14,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.page-work__full-width-image {
+  margin: 0px auto;
+  padding: 0px;
+  width: 100vw;
+  img {
+    width: 100%;
+  }
+}
+</style>
