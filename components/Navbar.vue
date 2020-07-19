@@ -5,11 +5,6 @@
         <img src="~/assets/images/header_logo.svg" alt="Polish Design Logo" />
       </nuxt-link>
     </div>
-    <div class="menu-trigger">
-      <i class="menu-trigger__bar menu-trigger__bar--top"></i>
-      <i class="menu-trigger__bar menu-trigger__bar--middle"></i>
-      <i class="menu-trigger__bar menu-trigger__bar--bottom"></i>
-    </div>
     <div class="top" @click="scrollTop">
       <a>
         <span>TOP</span>
@@ -20,11 +15,47 @@
         <img src="~/assets/images/header_arrow.svg" alt="header-arrow" />
       </a>
     </div>
+    <div v-show="isOpen" class="navigation__menu">
+      <div class="navigation__logo">
+        <nuxt-link to="/">
+          <img src="~/assets/images/header_logo.svg" alt="Polish Design Logo" />
+        </nuxt-link>
+      </div>
+      <div class="navigation__links">
+        <ul>
+          <nuxt-link to="/#feature-work"
+            ><li class="navigation__link" @click="toggleNav">
+              Work
+            </li></nuxt-link
+          >
+          <nuxt-link to="/#about"
+            ><li class="navigation__link" @click="toggleNav">
+              About us
+            </li></nuxt-link
+          >
+          <nuxt-link to="/#footer"
+            ><li class="navigation__link" @click="toggleNav">
+              Contact us
+            </li></nuxt-link
+          >
+        </ul>
+      </div>
+    </div>
+    <div class="menu-trigger" @click="toggleNav">
+      <i class="menu-trigger__bar menu-trigger__bar--top"></i>
+      <i class="menu-trigger__bar menu-trigger__bar--middle"></i>
+      <i class="menu-trigger__bar menu-trigger__bar--bottom"></i>
+    </div>
   </nav>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      isOpen: false,
+    }
+  },
   methods: {
     scrollTop() {
       window.scroll({
@@ -32,6 +63,9 @@ export default {
         left: 0,
         behavior: 'smooth',
       })
+    },
+    toggleNav() {
+      this.isOpen = !this.isOpen
     },
   },
 }
@@ -124,6 +158,34 @@ nav {
   @media screen and (max-width: 414px) {
     top: 19px;
     right: 14px;
+  }
+}
+.navigation {
+  &__menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $primary-color;
+  }
+  &__logo {
+    position: absolute;
+    top: 63px;
+    left: 114px;
+    width: 94px;
+    height: 55px;
+  }
+  &__links {
+    position: absolute;
+    left: 114px;
+    top: 183px;
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: $font-weight--black;
+  }
+  &__link {
+    margin-bottom: 4vh;
   }
 }
 </style>
