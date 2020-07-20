@@ -40,6 +40,43 @@
           >
         </ul>
       </div>
+      <div class="navigation__info">
+        <div class="navigation__messenger">
+          <p>With Messenger</p>
+          <a
+            href="http://m.me/polishdesigntw"
+            class="messenger__link"
+            target="_blank"
+          >
+            <img src="~/assets/images/msg.png" alt="Messenger" />
+          </a>
+        </div>
+        <div class="info-wrapper__second-row">
+          <div class="navigation__email">
+            <p>Email</p>
+            <a href="mailto:Hello@polish-design.com.tw" class="email__link">
+              Hello@polish-design.com.tw
+            </a>
+          </div>
+          <div class="navigation__follow-us">
+            <p>Follow Us</p>
+            <a
+              href="https://www.facebook.com/polishdesigntw/"
+              class="social__link social__link--fb"
+              target="_blank"
+            >
+              <img src="~/assets/images/social_fb.svg" alt="Facebook" />
+            </a>
+            <a
+              href="https://www.instagram.com/polishdesigntw/"
+              class="social__link social__link--ig"
+              target="_blank"
+            >
+              <img src="~/assets/images/social_ig.svg" alt="Instagram" />
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="menu-trigger" @click="toggleNav">
       <i class="menu-trigger__bar menu-trigger__bar--top"></i>
@@ -167,6 +204,7 @@ nav {
     left: 0;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
     background-color: $primary-color;
   }
   &__logo {
@@ -186,6 +224,126 @@ nav {
   }
   &__link {
     margin-bottom: 4vh;
+  }
+  &__info {
+    position: absolute;
+    left: 114px;
+    bottom: 70px;
+    display: flex;
+
+    @media screen and (min-aspect-ratio: 2/1) {
+      top: 183px;
+      left: 40vw;
+      bottom: auto;
+    }
+  }
+  &__messenger,
+  &__email,
+  &__follow-us {
+    padding-left: 26.5px;
+    border-left: 1px solid $secondary-color;
+    p {
+      font-weight: $font-weight--light;
+      margin: 0;
+      padding-top: 5.5px;
+      line-height: 16px;
+      font-size: 14px;
+    }
+  }
+  &__messenger {
+    .messenger__link {
+      display: block;
+      height: 111px;
+      margin: 36px 94px 16px 35px;
+      img {
+        width: 111px;
+      }
+    }
+  }
+  &__email {
+    padding-bottom: 50px;
+    .email__link {
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 48px;
+      margin-right: 55.5px;
+    }
+  }
+  &__follow-us {
+    .social__link {
+      display: inline-block;
+      padding: 22px 20px 0px 20px;
+    }
+    .social__link--fb {
+      margin-left: -15.5px;
+    }
+  }
+
+  @media screen and (max-width: 860px) {
+    &__logo,
+    &__links {
+      left: 47px;
+    }
+    &__info {
+      left: 30px;
+    }
+  }
+  @media screen and (max-width: 414px) {
+    &__logo {
+      top: 43px;
+    }
+    &__messenger,
+    &__email,
+    &__follow-us {
+      padding-left: 17px;
+    }
+    &__links {
+      top: 22vh;
+      font-size: 36px;
+      line-height: 44px;
+    }
+    &__link {
+      margin-bottom: 3vh;
+    }
+    &__info {
+      bottom: 35px;
+      flex-direction: column;
+    }
+    &__messenger {
+      .messenger__link {
+        margin: 8px 0px 3vh 130px;
+        height: 13vh;
+        img {
+          width: 13vh;
+        }
+      }
+    }
+    &__email {
+      padding-bottom: 0px;
+      .email__link {
+        margin-right: 0px;
+        font-size: 20px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 414px) and (min-aspect-ratio: 2/3) {
+    &__messenger {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 374px) {
+    &__links {
+      font-size: 30px;
+    }
+    &__link {
+      margin-bottom: 2vh;
+    }
+    &__email {
+      .email__link {
+        font-size: 17px;
+      }
+    }
   }
 }
 </style>
