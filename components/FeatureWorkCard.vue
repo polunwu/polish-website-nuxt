@@ -44,7 +44,28 @@ export default {
   data() {
     return {
       isLeaving: false,
+      viewRect: null,
     }
+  },
+  mounted() {
+    const getViewRect = function () {
+      return {
+        width: Math.max(
+          document.documentElement.clientWidth,
+          window.innerWidth || 0
+        ),
+        height: Math.max(
+          document.documentElement.clientHeight,
+          window.innerHeight || 0
+        ),
+      }
+    }
+    // get view rect
+    this.viewRect = getViewRect()
+    // update view rect when resized
+    window.addEventListener('resize', () => {
+      this.viewRect = getViewRect()
+    })
   },
   methods: {
     pageTargetClicked(event) {
@@ -53,13 +74,21 @@ export default {
     },
     animateThumbnail() {
       const { thumbnail } = this.$refs
-      // eslint-disable-next-line
       const thumbnailWrapper = thumbnail.parentNode
+      const thumbnailWrapperRect = thumbnailWrapper.getBoundingClientRect()
+
       gsap.to(thumbnailWrapper, {
-        width: '100vw',
-        height: '100vh',
-        top: '0px',
-        left: '0px',
+        x:
+          this.viewRect.width / 2 -
+          thumbnailWrapperRect.x -
+          thumbnailWrapperRect.width / 2,
+        y:
+          this.viewRect.height / 2 -
+          thumbnailWrapperRect.y -
+          thumbnailWrapperRect.height / 2,
+        scale: this.viewRect.height / thumbnailWrapperRect.height,
+        duration: 0.6,
+        ease: 'Circ.easeInOut',
       })
     },
   },

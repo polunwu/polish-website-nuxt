@@ -98,6 +98,11 @@ export default {
         property: 'twitter:image',
         content: '',
       },
+      // fb
+      {
+        property: 'fb:admins',
+        content: 'polishdesigntw',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
