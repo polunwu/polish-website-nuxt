@@ -148,6 +148,13 @@ export default {
       margin-bottom: 0px;
     }
   }
+  &__card.feature-work__card--leaving {
+    // leaving style
+    .feature-work__thumbnail-wrapper {
+      .feature-work__thumbnail {
+      }
+    }
+  }
   &__thumbnail-wrapper {
     display: block;
     width: 615px;

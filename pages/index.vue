@@ -20,6 +20,14 @@ export default {
     Service,
     About,
   },
+  methods: {},
+  transition: {
+    leave(el, done) {
+      setTimeout(() => {
+        done()
+      }, 1000)
+    },
+  },
 }
 </script>
 
