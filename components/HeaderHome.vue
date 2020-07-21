@@ -27,7 +27,7 @@
 export default {}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .header-home {
   position: relative;
   z-index: 1;

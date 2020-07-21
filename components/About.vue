@@ -55,7 +55,7 @@
 export default {}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .about {
   text-align: center;
   padding: 20px 22px 0px 22px;

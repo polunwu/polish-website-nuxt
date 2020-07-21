@@ -22,7 +22,7 @@
 export default {}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .service {
   padding: 149px 150px 214px 150px;
 

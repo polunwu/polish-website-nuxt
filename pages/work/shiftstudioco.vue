@@ -84,6 +84,9 @@ export default {
       },
     }
   },
+  head: {
+    title: 'Shift Studio 轉轉影像 - 磨人設計 | Polish Design',
+  },
 }
 </script>
 

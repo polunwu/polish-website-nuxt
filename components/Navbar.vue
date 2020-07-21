@@ -108,7 +108,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 nav {
   position: fixed;
   z-index: 2;

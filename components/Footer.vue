@@ -50,7 +50,7 @@
 export default {}
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .footer {
   background-color: #1c1c1c;
 
