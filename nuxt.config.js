@@ -67,7 +67,10 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {},
+  build: {
+    // transpile libraries as ES6 modules
+    transpile: ['gsap'],
+  },
   /*
    ** Style Resources for SASS global variables
    */

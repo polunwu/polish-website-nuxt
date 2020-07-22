@@ -6,7 +6,7 @@
     <nuxt-link :to="/work/ + work.name" class="feature-work__thumbnail-wrapper">
       <div
         ref="jsThumbnail"
-        class="feature-work__thumbnail"
+        class="feature-work__thumbnail js-scroll-target"
         :style="{ backgroundImage: `url(${work.thumbnailImageUrl})` }"
         @click="pageTargetClicked"
         @mouseenter="cardEnter"
@@ -14,13 +14,13 @@
       ></div>
     </nuxt-link>
     <div ref="jsContent" class="feature-work__content">
-      <span ref="jsNumber" class="feature-work__number">{{
+      <span ref="jsNumber" class="feature-work__number js-scroll-target">{{
         work.numString
       }}</span>
       <nuxt-link :to="/work/ + work.name">
         <h3
           ref="jsTitle"
-          class="feature-work__title"
+          class="feature-work__title js-scroll-target"
           @click="pageTargetClicked"
           @mouseenter="cardEnter"
           @mouseleave="cardLeave"
@@ -28,13 +28,17 @@
           {{ work.title }}
         </h3>
       </nuxt-link>
-      <h4 ref="jsSubtitle" class="feature-work__subtitle">
+      <h4 ref="jsSubtitle" class="feature-work__subtitle js-scroll-target">
         <span class="subtitle__category">{{ work.category }}</span
         >&nbsp;-&nbsp;
         <span class="subtitle__client">{{ work.client }}</span>
       </h4>
-      <p ref="jsKeywords" class="feature-work__keywords">{{ work.keywords }}</p>
-      <nuxt-link :to="/work/ + work.name" class="feature-work__link"
+      <p ref="jsKeywords" class="feature-work__keywords js-scroll-target">
+        {{ work.keywords }}
+      </p>
+      <nuxt-link
+        :to="/work/ + work.name"
+        class="feature-work__link js-scroll-target"
         ><span @click="pageTargetClicked">完整內容</span></nuxt-link
       >
     </div>
@@ -120,7 +124,7 @@ export default {
         .to(
           jsNumber,
           {
-            y: -20,
+            y: -10,
             autoAlpha: 0,
             duration: 0.3,
             ease: 'Circ.easIn',
@@ -130,7 +134,7 @@ export default {
         .to(
           jsSubtitle,
           {
-            x: 10,
+            x: 5,
             duration: 0.3,
             ease: 'Circ.easIn',
           },
@@ -139,7 +143,7 @@ export default {
         .to(
           jsKeywords,
           {
-            x: 33,
+            x: 28,
             duration: 0.3,
             ease: 'Circ.easIn',
           },
@@ -148,7 +152,7 @@ export default {
         .to(
           jsTitle,
           {
-            x: 30,
+            x: 25,
             duration: 0.3,
             ease: 'Circ.easIn',
           },

@@ -3,14 +3,22 @@
     <div class="feature-work__container">
       <h2 class="feature-work__label">Works</h2>
       <ul class="feature-work__list">
-        <FeatureWorkCard v-for="work in works" :key="work.id" :work="work" />
+        <FeatureWorkCard
+          v-for="work in works"
+          :key="work.id"
+          ref="jsWorkCard"
+          :work="work"
+        />
       </ul>
     </div>
   </section>
 </template>
 
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FeatureWorkCard from '@/components/FeatureWorkCard.vue'
+gsap.registerPlugin(ScrollTrigger)
 
 export default {
   components: {
@@ -81,6 +89,23 @@ export default {
         },
       ],
     }
+  },
+  mounted() {
+    // register scroll trigger elements
+    gsap.utils.toArray('.js-scroll-target').forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+        y: 60,
+        skewY: '-1',
+        autoAlpha: 0,
+        ease: 'Circ.easIn',
+        duration: 0.6,
+      })
+    })
   },
 }
 </script>
