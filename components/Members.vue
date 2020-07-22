@@ -32,6 +32,7 @@ export default {}
   overflow: hidden;
   .page-work__member {
     width: 180px;
+    height: 180px;
     margin: 0px -5px -10px -5px;
   }
 
