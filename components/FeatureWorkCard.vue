@@ -9,21 +9,31 @@
         class="feature-work__thumbnail"
         :style="{ backgroundImage: `url(${work.thumbnailImageUrl})` }"
         @click="pageTargetClicked"
+        @mouseenter="cardEnter"
+        @mouseleave="cardLeave"
       ></div>
     </nuxt-link>
-    <div class="feature-work__content">
-      <span class="feature-work__number">{{ work.numString }}</span>
+    <div ref="jsContent" class="feature-work__content">
+      <span ref="jsNumber" class="feature-work__number">{{
+        work.numString
+      }}</span>
       <nuxt-link :to="/work/ + work.name">
-        <h3 class="feature-work__title" @click="pageTargetClicked">
+        <h3
+          ref="jsTitle"
+          class="feature-work__title"
+          @click="pageTargetClicked"
+          @mouseenter="cardEnter"
+          @mouseleave="cardLeave"
+        >
           {{ work.title }}
         </h3>
       </nuxt-link>
-      <h4 class="feature-work__subtitle">
+      <h4 ref="jsSubtitle" class="feature-work__subtitle">
         <span class="subtitle__category">{{ work.category }}</span
         >&nbsp;-&nbsp;
         <span class="subtitle__client">{{ work.client }}</span>
       </h4>
-      <p class="feature-work__keywords">{{ work.keywords }}</p>
+      <p ref="jsKeywords" class="feature-work__keywords">{{ work.keywords }}</p>
       <nuxt-link :to="/work/ + work.name" class="feature-work__link"
         ><span @click="pageTargetClicked">完整內容</span></nuxt-link
       >
@@ -70,25 +80,122 @@ export default {
   methods: {
     pageTargetClicked(event) {
       this.isLeaving = true
-      this.animateThumbnail()
+      this.thumbnailLeaving()
     },
-    animateThumbnail() {
+    thumbnailLeaving() {
+      const jsContent = this.$refs.jsContent
       const thumbnailWrapper = this.$refs.jsThumbnail.parentNode
       const thumbnailWrapperRect = thumbnailWrapper.getBoundingClientRect()
 
-      gsap.to(thumbnailWrapper, {
-        x:
-          this.viewRect.width / 2 -
-          thumbnailWrapperRect.x -
-          thumbnailWrapperRect.width / 2,
-        y:
-          this.viewRect.height / 2 -
-          thumbnailWrapperRect.y -
-          thumbnailWrapperRect.height / 2,
-        scale: this.viewRect.height / thumbnailWrapperRect.height,
-        duration: 0.6,
-        ease: 'Back.easeInOut',
-      })
+      gsap
+        .timeline()
+        .to(thumbnailWrapper, {
+          x:
+            this.viewRect.width / 2 -
+            thumbnailWrapperRect.x -
+            thumbnailWrapperRect.width / 2,
+          y:
+            this.viewRect.height / 2 -
+            thumbnailWrapperRect.y -
+            thumbnailWrapperRect.height / 2,
+          scale: this.viewRect.height / thumbnailWrapperRect.height,
+          duration: 0.6,
+          ease: 'Back.easeInOut',
+        })
+        .to(
+          jsContent,
+          {
+            x: 150,
+            autoAlpha: 0,
+            duration: 0.3,
+            ease: 'Back.easeInOut',
+          },
+          '0'
+        )
+    },
+    cardEnter() {
+      const { jsNumber, jsSubtitle, jsKeywords, jsTitle } = this.$refs
+      gsap
+        .timeline()
+        .to(
+          jsNumber,
+          {
+            y: -20,
+            autoAlpha: 0,
+            duration: 0.3,
+            ease: 'Circ.easIn',
+          },
+          '0'
+        )
+        .to(
+          jsSubtitle,
+          {
+            x: 10,
+            duration: 0.3,
+            ease: 'Circ.easIn',
+          },
+          '0'
+        )
+        .to(
+          jsKeywords,
+          {
+            x: 33,
+            duration: 0.3,
+            ease: 'Circ.easIn',
+          },
+          '0'
+        )
+        .to(
+          jsTitle,
+          {
+            x: 30,
+            duration: 0.3,
+            ease: 'Circ.easIn',
+          },
+          '0'
+        )
+    },
+    cardLeave() {
+      const { jsNumber, jsSubtitle, jsKeywords, jsTitle } = this.$refs
+      gsap
+        .timeline()
+        .to(
+          jsNumber,
+          {
+            y: 0,
+            autoAlpha: 1,
+            duration: 0.3,
+            ease: 'Circ.easIn',
+          },
+          '0'
+        )
+        .to(
+          jsSubtitle,
+          {
+            x: 0,
+            duration: 0.3,
+            ease: 'Circ.easIn',
+          },
+          '0'
+        )
+        .to(
+          jsKeywords,
+          {
+            x: 0,
+            duration: 0.3,
+            ease: 'Circ.easIn',
+          },
+          '0'
+        )
+        .to(
+          jsTitle,
+          {
+            x: 0,
+            duration: 0.3,
+            ease: 'Circ.easIn',
+          },
+          '0'
+        )
     },
   },
 }

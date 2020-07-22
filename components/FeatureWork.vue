@@ -148,13 +148,6 @@ export default {
       margin-bottom: 0px;
     }
   }
-  &__card.feature-work__card--leaving {
-    // leaving style
-    .feature-work__thumbnail-wrapper {
-      .feature-work__thumbnail {
-      }
-    }
-  }
   &__thumbnail-wrapper {
     display: block;
     width: 615px;
@@ -186,6 +179,7 @@ export default {
       position: absolute;
     }
     .feature-work__number {
+      display: inline-block;
       top: -82px;
       line-height: 18px;
     }

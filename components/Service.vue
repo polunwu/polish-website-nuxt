@@ -61,17 +61,38 @@ export default {}
     line-height: 26px;
     opacity: 0.5;
     padding-top: 7px;
+
+    transition: all 0.5s cubic-bezier(0.785, 0.135, 0.15, 0.86);
   }
   &__name {
     font-size: 80px;
-    line-height: 95px;
+    line-height: 91px;
     font-weight: $font-weight--light;
     padding-left: 35px;
+    cursor: pointer;
 
     @media screen and (max-width: 524px) {
       font-size: 50px;
       line-height: 60px;
       padding-left: 26px;
+    }
+  }
+  &__name:after {
+    display: block;
+    content: '';
+    border-bottom: solid 4px $secondary-color;
+    transform-origin: 100% 50%;
+    transform: scaleX(0);
+    transition: transform 500ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  }
+  &__name:hover:after {
+    transform-origin: 0% 50%;
+    transform: scaleX(1);
+  }
+  &__item:hover {
+    .service__index {
+      opacity: 0;
+      transform: translate3d(-20px, 0px, 0px);
     }
   }
 }

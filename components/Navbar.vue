@@ -369,6 +369,7 @@ nav {
   font-size: 20px;
   font-weight: $font-weight--black;
   writing-mode: vertical-rl;
+  cursor: pointer;
 
   @media screen and (max-width: 767px) {
     display: none;
