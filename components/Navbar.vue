@@ -15,78 +15,108 @@
         <img src="~/assets/images/header_arrow.svg" alt="header-arrow" />
       </a>
     </div>
-    <div v-show="isOpen" class="navigation__menu">
-      <div class="navigation__logo">
-        <nuxt-link to="/">
-          <img src="~/assets/images/header_logo.svg" alt="Polish Design Logo" />
-        </nuxt-link>
-      </div>
-      <div class="navigation__links">
-        <ul>
-          <nuxt-link to="/#feature-work"
-            ><li class="navigation__link" @click="toggleNav">
-              Work
-            </li></nuxt-link
-          >
-          <nuxt-link to="/#about"
-            ><li class="navigation__link" @click="toggleNav">
-              About us
-            </li></nuxt-link
-          >
-          <nuxt-link to="/#footer"
-            ><li class="navigation__link" @click="toggleNav">
-              Contact us
-            </li></nuxt-link
-          >
-        </ul>
-      </div>
-      <div class="navigation__info">
-        <div class="navigation__messenger">
-          <p>With Messenger</p>
-          <a
-            href="http://m.me/polishdesigntw"
-            class="messenger__link"
-            target="_blank"
-          >
-            <img src="~/assets/images/msg.png" alt="Messenger" />
-          </a>
+    <transition :css="false" @enter="enterMenu" @leave="leaveMenu">
+      <div v-show="isOpen" ref="jsMenu" class="navigation__menu">
+        <div ref="jsMenuLogo" class="navigation__logo">
+          <nuxt-link to="/">
+            <img
+              src="~/assets/images/header_logo.svg"
+              alt="Polish Design Logo"
+            />
+          </nuxt-link>
         </div>
-        <div class="info-wrapper__second-row">
-          <div class="navigation__email">
-            <p>Email</p>
-            <a href="mailto:Hello@polish-design.com.tw" class="email__link">
-              Hello@polish-design.com.tw
-            </a>
-          </div>
-          <div class="navigation__follow-us">
-            <p>Follow Us</p>
+        <div class="navigation__links">
+          <ul>
+            <nuxt-link to="/#feature-work"
+              ><li ref="jsMenuWork" class="navigation__link" @click="toggleNav">
+                Work
+              </li></nuxt-link
+            >
+            <nuxt-link to="/#about"
+              ><li
+                ref="jsMenuAbout"
+                class="navigation__link"
+                @click="toggleNav"
+              >
+                About us
+              </li></nuxt-link
+            >
+            <nuxt-link to="/#footer"
+              ><li
+                ref="jsMenuContact"
+                class="navigation__link"
+                @click="toggleNav"
+              >
+                Contact us
+              </li></nuxt-link
+            >
+          </ul>
+        </div>
+        <div ref="jsMenuInfo" class="navigation__info">
+          <div class="navigation__messenger">
+            <p>With Messenger</p>
             <a
-              href="https://www.facebook.com/polishdesigntw/"
-              class="social__link social__link--fb"
+              href="http://m.me/polishdesigntw"
+              class="messenger__link"
               target="_blank"
             >
-              <img src="~/assets/images/social_fb.svg" alt="Facebook" />
+              <img src="~/assets/images/msg.png" alt="Messenger" />
             </a>
-            <a
-              href="https://www.instagram.com/polishdesigntw/"
-              class="social__link social__link--ig"
-              target="_blank"
-            >
-              <img src="~/assets/images/social_ig.svg" alt="Instagram" />
-            </a>
+          </div>
+          <div class="info-wrapper__second-row">
+            <div class="navigation__email">
+              <p>Email</p>
+              <a href="mailto:Hello@polish-design.com.tw" class="email__link">
+                Hello@polish-design.com.tw
+              </a>
+            </div>
+            <div class="navigation__follow-us">
+              <p>Follow Us</p>
+              <a
+                href="https://www.facebook.com/polishdesigntw/"
+                class="social__link social__link--fb"
+                target="_blank"
+              >
+                <img src="~/assets/images/social_fb.svg" alt="Facebook" />
+              </a>
+              <a
+                href="https://www.instagram.com/polishdesigntw/"
+                class="social__link social__link--ig"
+                target="_blank"
+              >
+                <img src="~/assets/images/social_ig.svg" alt="Instagram" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="menu-trigger" @click="toggleNav">
-      <i class="menu-trigger__bar menu-trigger__bar--top"></i>
-      <i class="menu-trigger__bar menu-trigger__bar--middle"></i>
-      <i class="menu-trigger__bar menu-trigger__bar--bottom"></i>
+    </transition>
+    <div
+      class="menu-trigger"
+      @click="toggleNav"
+      @mouseenter="enterHamburger"
+      @mouseleave="leaveHamburger"
+    >
+      <i ref="jsTriggerLayer" class="menu-trigger__layer"></i>
+      <i
+        ref="jsTriggerBarTop"
+        class="menu-trigger__bar menu-trigger__bar--top"
+      ></i>
+      <i
+        ref="jsTriggerBarMid"
+        class="menu-trigger__bar menu-trigger__bar--middle"
+      ></i>
+      <i
+        ref="jsTriggerBarBot"
+        class="menu-trigger__bar menu-trigger__bar--bottom"
+      ></i>
     </div>
   </nav>
 </template>
 
 <script>
+import { gsap } from 'gsap'
+
 export default {
   data() {
     return {
@@ -102,7 +132,211 @@ export default {
       })
     },
     toggleNav() {
+      const jsTriggerBarTop = this.$refs.jsTriggerBarTop
+      const jsTriggerBarBot = this.$refs.jsTriggerBarBot
+      if (!this.isOpen) {
+        this.openHamgurger()
+          .to(
+            jsTriggerBarTop,
+            {
+              x: -30,
+              autoAlpha: 0,
+              duration: 0.4,
+            },
+            '0'
+          )
+          .to(
+            jsTriggerBarBot,
+            {
+              x: 30,
+              autoAlpha: 0,
+              duration: 0.4,
+            },
+            '0'
+          )
+      } else {
+        this.closeHamburger()
+      }
       this.isOpen = !this.isOpen
+    },
+    enterHamburger() {
+      // 滑鼠移入時
+      if (!this.isOpen) {
+        // 如果 Menu 未展開，展開漢堡
+        this.openHamgurger()
+      }
+    },
+    leaveHamburger() {
+      // 滑鼠離開時
+      if (!this.isOpen) {
+        // 如果 Menu 未展開，關閉漢堡
+        this.closeHamburger()
+      }
+    },
+    openHamgurger() {
+      const jsTriggerLayer = this.$refs.jsTriggerLayer
+      const jsTriggerBarTop = this.$refs.jsTriggerBarTop
+      const jsTriggerBarBot = this.$refs.jsTriggerBarBot
+      return gsap
+        .timeline()
+        .to(jsTriggerLayer, {
+          scale: 1.2,
+          duration: 0.4,
+          ease: 'cubic-bezier(0.33, 1, 0.68, 1)',
+        })
+        .to(
+          jsTriggerBarTop,
+          {
+            x: -10,
+            duration: 0.2,
+            ease: 'cubic-bezier(0.33, 1, 0.68, 1)',
+          },
+          '0'
+        )
+        .to(
+          jsTriggerBarBot,
+          {
+            x: 10,
+            duration: 0.2,
+            ease: 'cubic-bezier(0.33, 1, 0.68, 1)',
+          },
+          '0'
+        )
+    },
+    closeHamburger() {
+      const jsTriggerLayer = this.$refs.jsTriggerLayer
+      const jsTriggerBarTop = this.$refs.jsTriggerBarTop
+      const jsTriggerBarBot = this.$refs.jsTriggerBarBot
+      return gsap
+        .timeline()
+        .to(jsTriggerLayer, {
+          scale: 0.2,
+          duration: 0.3,
+          ease: 'cubic-bezier(0.33, 1, 0.68, 1)',
+        })
+        .to(
+          jsTriggerBarTop,
+          {
+            x: 0,
+            autoAlpha: 1,
+            duration: 0.2,
+          },
+          '0'
+        )
+        .to(
+          jsTriggerBarBot,
+          {
+            x: 0,
+            autoAlpha: 1,
+            duration: 0.2,
+          },
+          '0'
+        )
+    },
+    enterMenu(el, done) {
+      // this is a transition js hook bind with v-enter
+      // el = menu
+      const {
+        jsMenuLogo,
+        jsMenuWork,
+        jsMenuAbout,
+        jsMenuContact,
+        jsMenuInfo,
+      } = this.$refs
+      gsap
+        .timeline({
+          onComplete: done, // complete js hook
+          defaults: {
+            duration: 0.5,
+            ease: 'Power4.easeOut',
+          },
+        })
+        .fromTo(el, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 })
+        .fromTo(
+          jsMenuLogo,
+          { autoAlpha: 0, y: 50 },
+          { autoAlpha: 1, y: 0 },
+          '0.2'
+        )
+        .fromTo(
+          jsMenuWork,
+          { autoAlpha: 0, y: 50 },
+          { autoAlpha: 1, y: 0 },
+          '0.3'
+        )
+        .fromTo(
+          jsMenuAbout,
+          { autoAlpha: 0, y: 50 },
+          { autoAlpha: 1, y: 0 },
+          '0.4'
+        )
+        .fromTo(
+          jsMenuContact,
+          { autoAlpha: 0, y: 50 },
+          { autoAlpha: 1, y: 0 },
+          '0.5'
+        )
+        .fromTo(
+          jsMenuInfo,
+          { autoAlpha: 0, y: 50 },
+          { autoAlpha: 1, y: 0 },
+          '0.6'
+        )
+    },
+    leaveMenu(el, done) {
+      // this is a transition js hook bind with v-leave
+      // el = menu
+      const {
+        jsMenuLogo,
+        jsMenuWork,
+        jsMenuAbout,
+        jsMenuContact,
+        jsMenuInfo,
+      } = this.$refs
+      gsap
+        .timeline({
+          onComplete: done, // complete js hook
+          defaults: {
+            duration: 0.5,
+            ease: 'Power4.easeOut',
+          },
+        })
+        .fromTo(
+          jsMenuLogo,
+          { autoAlpha: 1, y: 0 },
+          { autoAlpha: 0, y: -150 },
+          '0'
+        )
+        .fromTo(
+          jsMenuWork,
+          { autoAlpha: 1, y: 0 },
+          { autoAlpha: 0, y: -150 },
+          '0'
+        )
+        .fromTo(
+          jsMenuAbout,
+          { autoAlpha: 1, y: 0 },
+          { autoAlpha: 0, y: -150 },
+          '0'
+        )
+        .fromTo(
+          jsMenuContact,
+          { autoAlpha: 1, y: 0 },
+          { autoAlpha: 0, y: -150 },
+          '0'
+        )
+        .fromTo(
+          jsMenuInfo,
+          { autoAlpha: 1, y: 0 },
+          { autoAlpha: 0, y: -150 },
+          '0'
+        )
+        .fromTo(
+          el,
+          { autoAlpha: 1 },
+          { autoAlpha: 0, duration: 0.8, ease: 'Power4.easeIn' },
+          '0'
+        )
     },
   },
 }
@@ -176,6 +410,18 @@ nav {
   flex-direction: column;
   padding: 7px 7.5px;
   font-size: 0px;
+
+  &__layer {
+    position: absolute;
+    background-color: white;
+    width: 180px;
+    height: 180px;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.2);
+    border-radius: 50%;
+  }
 
   &__bar {
     background-color: $primary-color;
