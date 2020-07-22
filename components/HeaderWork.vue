@@ -5,9 +5,9 @@
         class="header-work__cover-image-wrapper"
         :style="{ backgroundImage: `url(${coverImageUrl})` }"
       >
-        <div class="header-work__content">
+        <div ref="jsContent" class="header-work__content">
           <span class="header-work__number">{{ numString }}</span>
-          <h3 class="header-work__title">
+          <h3 ref="jsContent" class="header-work__title">
             {{ title }}
           </h3>
           <h4 class="header-work__subtitle">
@@ -23,32 +23,44 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+
 export default {
   props: {
     numString: {
       type: String,
-      default: 'xx',
+      default: '',
     },
     title: {
       type: String,
-      default: 'TITLE',
+      default: '',
     },
     category: {
       type: String,
-      default: 'CATEGORY',
+      default: '',
     },
     client: {
       type: String,
-      default: 'CLIENT',
+      default: '',
     },
     keywords: {
       type: String,
-      default: 'KEYWORDS',
+      default: '',
     },
     coverImageUrl: {
       type: String,
-      default: 'COVERIMAGEURL',
+      default: '',
     },
+  },
+  mounted() {
+    const texts = this.$refs.jsContent.children
+    gsap.from(texts, {
+      y: 20,
+      autoAlpha: 0,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'Power4.easeOut',
+    })
   },
 }
 </script>

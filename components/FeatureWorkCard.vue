@@ -5,7 +5,7 @@
   >
     <nuxt-link :to="/work/ + work.name" class="feature-work__thumbnail-wrapper">
       <div
-        ref="thumbnail"
+        ref="jsThumbnail"
         class="feature-work__thumbnail"
         :style="{ backgroundImage: `url(${work.thumbnailImageUrl})` }"
         @click="pageTargetClicked"
@@ -73,8 +73,7 @@ export default {
       this.animateThumbnail()
     },
     animateThumbnail() {
-      const { thumbnail } = this.$refs
-      const thumbnailWrapper = thumbnail.parentNode
+      const thumbnailWrapper = this.$refs.jsThumbnail.parentNode
       const thumbnailWrapperRect = thumbnailWrapper.getBoundingClientRect()
 
       gsap.to(thumbnailWrapper, {
@@ -88,7 +87,7 @@ export default {
           thumbnailWrapperRect.height / 2,
         scale: this.viewRect.height / thumbnailWrapperRect.height,
         duration: 0.6,
-        ease: 'Circ.easeInOut',
+        ease: 'Back.easeInOut',
       })
     },
   },
