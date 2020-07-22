@@ -1,25 +1,47 @@
 <template>
   <section id="service" class="service">
-    <h2 class="service__label">What We Do</h2>
+    <h2 class="service__label js-scroll-t-service">What We Do</h2>
     <ul class="service__list">
       <li class="service__item">
         <span class="service__index">01</span>
-        <span class="service__name">Branding</span>
+        <span class="service__name js-scroll-t-service">Branding</span>
       </li>
       <li class="service__item">
         <span class="service__index">02</span>
-        <span class="service__name">Website</span>
+        <span class="service__name js-scroll-t-service">Website</span>
       </li>
       <li class="service__item">
         <span class="service__index">03</span>
-        <span class="service__name">System</span>
+        <span class="service__name js-scroll-t-service">System</span>
       </li>
     </ul>
   </section>
 </template>
 
 <script>
-export default {}
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
+export default {
+  mounted() {
+    // register scroll trigger elements
+    gsap.utils.toArray('.js-scroll-t-service').forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+        y: 60,
+        skewY: '-1',
+        autoAlpha: 0,
+        ease: 'Circ.easIn',
+        duration: 0.6,
+      })
+    })
+  },
+}
 </script>
 
 <style lang="scss">
@@ -85,14 +107,14 @@ export default {}
     transform: scaleX(0);
     transition: transform 500ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
   }
-  &__name:hover:after {
-    transform-origin: 0% 50%;
-    transform: scaleX(1);
-  }
   &__item:hover {
     .service__index {
       opacity: 0;
       transform: translate3d(-20px, 0px, 0px);
+    }
+    .service__name:after {
+      transform-origin: 0% 50%;
+      transform: scaleX(1);
     }
   }
 }

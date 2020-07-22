@@ -1,11 +1,11 @@
 <template>
   <footer id="footer" class="footer">
     <div class="footer__info-wrapper">
-      <div class="footer__contact-us">
+      <div class="footer__contact-us js-scroll-t-footer">
         <h3>Contact Us</h3>
         <p>與我們討論</p>
       </div>
-      <div class="footer__messenger">
+      <div class="footer__messenger js-scroll-t-footer">
         <p>With Messenger</p>
         <a
           href="http://m.me/polishdesigntw"
@@ -15,13 +15,13 @@
           <img src="~/assets/images/msg.png" alt="Messenger" />
         </a>
       </div>
-      <div class="footer__email">
+      <div class="footer__email js-scroll-t-footer">
         <p>Email</p>
         <a href="mailto:Hello@polish-design.com.tw" class="email__link">
           Hello@polish-design.com.tw
         </a>
       </div>
-      <div class="footer__follow-us">
+      <div class="footer__follow-us js-scroll-t-footer">
         <h3>Follow Us</h3>
         <p>關注我們的 Insta & Facebook</p>
         <a
@@ -47,7 +47,29 @@
 </template>
 
 <script>
-export default {}
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
+export default {
+  mounted() {
+    // register scroll trigger elements
+    gsap.utils.toArray('.js-scroll-t-footer').forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+        },
+        y: 20,
+        skewY: '-1',
+        autoAlpha: 0,
+        ease: 'Circ.easIn',
+        duration: 0.6,
+      })
+    })
+  },
+}
 </script>
 
 <style lang="scss">

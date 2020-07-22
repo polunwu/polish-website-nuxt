@@ -1,12 +1,9 @@
 <template>
-  <li
-    class="feature-work__card"
-    :class="{ 'feature-work__card--leaving': isLeaving }"
-  >
+  <li class="feature-work__card">
     <nuxt-link :to="/work/ + work.name" class="feature-work__thumbnail-wrapper">
       <div
         ref="jsThumbnail"
-        class="feature-work__thumbnail js-scroll-target"
+        class="feature-work__thumbnail js-scroll-t-work"
         :style="{ backgroundImage: `url(${work.thumbnailImageUrl})` }"
         @click="pageTargetClicked"
         @mouseenter="cardEnter"
@@ -14,13 +11,13 @@
       ></div>
     </nuxt-link>
     <div ref="jsContent" class="feature-work__content">
-      <span ref="jsNumber" class="feature-work__number js-scroll-target">{{
+      <span ref="jsNumber" class="feature-work__number js-scroll-t-work">{{
         work.numString
       }}</span>
       <nuxt-link :to="/work/ + work.name">
         <h3
           ref="jsTitle"
-          class="feature-work__title js-scroll-target"
+          class="feature-work__title js-scroll-t-work"
           @click="pageTargetClicked"
           @mouseenter="cardEnter"
           @mouseleave="cardLeave"
@@ -28,17 +25,17 @@
           {{ work.title }}
         </h3>
       </nuxt-link>
-      <h4 ref="jsSubtitle" class="feature-work__subtitle js-scroll-target">
+      <h4 ref="jsSubtitle" class="feature-work__subtitle js-scroll-t-work">
         <span class="subtitle__category">{{ work.category }}</span
         >&nbsp;-&nbsp;
         <span class="subtitle__client">{{ work.client }}</span>
       </h4>
-      <p ref="jsKeywords" class="feature-work__keywords js-scroll-target">
+      <p ref="jsKeywords" class="feature-work__keywords js-scroll-t-work">
         {{ work.keywords }}
       </p>
       <nuxt-link
         :to="/work/ + work.name"
-        class="feature-work__link js-scroll-target"
+        class="feature-work__link js-scroll-t-work"
         ><span @click="pageTargetClicked">完整內容</span></nuxt-link
       >
     </div>

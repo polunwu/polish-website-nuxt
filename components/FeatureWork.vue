@@ -1,14 +1,9 @@
 <template>
   <section id="feature-work" class="feature-work">
     <div class="feature-work__container">
-      <h2 class="feature-work__label">Works</h2>
+      <h2 class="feature-work__label js-scroll-t-work">Works</h2>
       <ul class="feature-work__list">
-        <FeatureWorkCard
-          v-for="work in works"
-          :key="work.id"
-          ref="jsWorkCard"
-          :work="work"
-        />
+        <FeatureWorkCard v-for="work in works" :key="work.id" :work="work" />
       </ul>
     </div>
   </section>
@@ -92,7 +87,7 @@ export default {
   },
   mounted() {
     // register scroll trigger elements
-    gsap.utils.toArray('.js-scroll-target').forEach((el) => {
+    gsap.utils.toArray('.js-scroll-t-work').forEach((el) => {
       gsap.from(el, {
         scrollTrigger: {
           trigger: el,

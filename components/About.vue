@@ -7,18 +7,18 @@
           我們是長期關注 WWDC<br />及 Adobe 股價的開發團隊
         </h2>
         <div class="about__milestones">
-          <div class="about__record">
-            <p class="record__score">200</p>
+          <div class="about__record js-scroll-t-about-ramens">
+            <p class="record__score">{{ counter.ramens }}</p>
             <p class="record__target">每年消費拉麵（碗）</p>
           </div>
-          <div class="about__record">
-            <p class="record__score">5</p>
+          <div class="about__record js-scroll-t-about-keyboards">
+            <p class="record__score">{{ counter.keyboards }}</p>
             <p class="record__target record__target--dist">
               因工作破壞碟型鍵盤（組）
             </p>
           </div>
-          <div class="about__record">
-            <p class="record__score">99+</p>
+          <div class="about__record js-scroll-t-about-tinderlikes">
+            <p class="record__score">{{ counter.tinderLikes }}+</p>
             <p class="record__target record__target--tinder">
               Likes on Tinder ( per day )
             </p>
@@ -52,7 +52,72 @@
 </template>
 
 <script>
-export default {}
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
+
+export default {
+  data() {
+    return {
+      counter: {
+        ramens: 0,
+        keyboards: 0,
+        tinderLikes: 0,
+      },
+    }
+  },
+  mounted() {
+    this.registerCounterAnimations()
+  },
+  methods: {
+    registerCounterAnimations() {
+      const animatedCounter = {
+        ramens: 0,
+        keyboards: 0,
+        tinderLikes: 0,
+      }
+      gsap.to(animatedCounter, {
+        scrollTrigger: {
+          trigger: '.js-scroll-t-about-ramens',
+          start: 'top 100%',
+          toggleActions: 'play none none none',
+        },
+        ramens: 200,
+        ease: 'Circ.easIn',
+        duration: 1.2,
+        onUpdate: () => {
+          this.counter.ramens = animatedCounter.ramens.toFixed(0)
+        },
+      })
+      gsap.to(animatedCounter, {
+        scrollTrigger: {
+          trigger: '.js-scroll-t-about-keyboards',
+          start: 'top 100%',
+          toggleActions: 'play none none none',
+        },
+        keyboards: 5,
+        ease: 'Circ.easIn',
+        duration: 0.8,
+        onUpdate: () => {
+          this.counter.keyboards = animatedCounter.keyboards.toFixed(0)
+        },
+      })
+      gsap.to(animatedCounter, {
+        scrollTrigger: {
+          trigger: '.js-scroll-t-about-tinderlikes',
+          start: 'top 100%',
+          toggleActions: 'play none none none',
+        },
+        tinderLikes: 99,
+        ease: 'Circ.easIn',
+        duration: 1,
+        onUpdate: () => {
+          this.counter.tinderLikes = animatedCounter.tinderLikes.toFixed(0)
+        },
+      })
+    },
+  },
+}
 </script>
 
 <style lang="scss">
