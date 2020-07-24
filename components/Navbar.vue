@@ -27,12 +27,12 @@
         </div>
         <div class="navigation__links">
           <ul>
-            <nuxt-link to="/#feature-work"
+            <nuxt-link to="/work#feature-work"
               ><li ref="jsMenuWork" class="navigation__link" @click="toggleNav">
                 Work
               </li></nuxt-link
             >
-            <nuxt-link to="/#about"
+            <nuxt-link to="/work#about"
               ><li
                 ref="jsMenuAbout"
                 class="navigation__link"
@@ -41,7 +41,7 @@
                 About us
               </li></nuxt-link
             >
-            <nuxt-link to="/#footer"
+            <nuxt-link to="/work#footer"
               ><li
                 ref="jsMenuContact"
                 class="navigation__link"

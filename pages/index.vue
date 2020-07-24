@@ -1,33 +1,28 @@
 <template>
   <div class="container">
     <HeaderHome />
-    <FeatureWork />
-    <About />
-    <Service />
+    <Scroller />
   </div>
 </template>
 
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import HeaderHome from '@/components/HeaderHome.vue'
-import FeatureWork from '@/components/FeatureWork.vue'
-import Service from '@/components/Service.vue'
-import About from '@/components/About.vue'
+import Scroller from '@/components/Scroller.vue'
+gsap.registerPlugin(ScrollTrigger)
 
 export default {
+  layout: 'intro',
   components: {
     HeaderHome,
-    FeatureWork,
-    Service,
-    About,
+    Scroller,
   },
+  data() {
+    return {}
+  },
+  mounted() {},
   methods: {},
-  transition: {
-    leave(el, done) {
-      setTimeout(() => {
-        done()
-      }, 600)
-    },
-  },
 }
 </script>
 

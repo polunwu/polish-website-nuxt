@@ -32,6 +32,7 @@ export default {}
   position: relative;
   z-index: 1;
   .video-background {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -39,7 +40,7 @@ export default {}
     object-fit: cover;
   }
   .email {
-    position: absolute;
+    position: fixed;
     left: 34px;
     top: calc(100vh - 209px);
     color: $secondary-color;
