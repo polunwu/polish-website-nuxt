@@ -41,12 +41,10 @@ export default {}
   .email {
     position: absolute;
     left: 34px;
-    bottom: 33px;
+    top: calc(100vh - 209px);
     color: $secondary-color;
     font-size: 15px;
     writing-mode: vertical-rl;
-
-    mix-blend-mode: difference;
 
     @media screen and (max-width: 414px) {
       left: 18px;

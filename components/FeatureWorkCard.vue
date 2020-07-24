@@ -116,87 +116,99 @@ export default {
     },
     cardEnter() {
       const { jsNumber, jsSubtitle, jsKeywords, jsTitle } = this.$refs
-      gsap
-        .timeline()
-        .to(
-          jsNumber,
-          {
-            y: -10,
-            autoAlpha: 0,
-            duration: 0.3,
-            ease: 'Circ.easIn',
-          },
-          '0'
-        )
-        .to(
-          jsSubtitle,
-          {
-            x: 5,
-            duration: 0.3,
-            ease: 'Circ.easIn',
-          },
-          '0'
-        )
-        .to(
-          jsKeywords,
-          {
-            x: 28,
-            duration: 0.3,
-            ease: 'Circ.easIn',
-          },
-          '0'
-        )
-        .to(
-          jsTitle,
-          {
-            x: 25,
-            duration: 0.3,
-            ease: 'Circ.easIn',
-          },
-          '0'
-        )
+
+      // 只有桌機以上有 hover 效果
+      if (this.viewRect.width >= 768) {
+        gsap
+          .timeline()
+          .to(
+            jsNumber,
+            {
+              y: -10,
+              autoAlpha: 0,
+              duration: 0.3,
+              ease: 'Circ.easIn',
+            },
+            '0'
+          )
+          .to(
+            jsSubtitle,
+            {
+              x: 5,
+              opacity: 1,
+              duration: 0.3,
+              ease: 'Circ.easIn',
+            },
+            '0'
+          )
+          .to(
+            jsKeywords,
+            {
+              x: 28,
+              opacity: 0.7,
+              duration: 0.3,
+              ease: 'Circ.easIn',
+            },
+            '0'
+          )
+          .to(
+            jsTitle,
+            {
+              x: 25,
+              duration: 0.3,
+              ease: 'Circ.easIn',
+            },
+            '0'
+          )
+      }
     },
     cardLeave() {
       const { jsNumber, jsSubtitle, jsKeywords, jsTitle } = this.$refs
-      gsap
-        .timeline()
-        .to(
-          jsNumber,
-          {
-            y: 0,
-            autoAlpha: 1,
-            duration: 0.3,
-            ease: 'Circ.easIn',
-          },
-          '0'
-        )
-        .to(
-          jsSubtitle,
-          {
-            x: 0,
-            duration: 0.3,
-            ease: 'Circ.easIn',
-          },
-          '0'
-        )
-        .to(
-          jsKeywords,
-          {
-            x: 0,
-            duration: 0.3,
-            ease: 'Circ.easIn',
-          },
-          '0'
-        )
-        .to(
-          jsTitle,
-          {
-            x: 0,
-            duration: 0.3,
-            ease: 'Circ.easIn',
-          },
-          '0'
-        )
+
+      // 只有桌機以上有 hover 效果
+      if (this.viewRect.width >= 768) {
+        gsap
+          .timeline()
+          .to(
+            jsNumber,
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.3,
+              ease: 'Circ.easIn',
+            },
+            '0'
+          )
+          .to(
+            jsSubtitle,
+            {
+              x: 0,
+              opacity: 1,
+              duration: 0.3,
+              ease: 'Circ.easIn',
+            },
+            '0'
+          )
+          .to(
+            jsKeywords,
+            {
+              x: 0,
+              opacity: 0.7,
+              duration: 0.3,
+              ease: 'Circ.easIn',
+            },
+            '0'
+          )
+          .to(
+            jsTitle,
+            {
+              x: 0,
+              duration: 0.3,
+              ease: 'Circ.easIn',
+            },
+            '0'
+          )
+      }
     },
   },
 }

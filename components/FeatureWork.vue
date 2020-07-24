@@ -229,10 +229,12 @@ export default {
       }
       .feature-work__subtitle {
         padding-bottom: 1px;
+        opacity: 0.3;
       }
       .feature-work__keywords {
         line-height: 21px;
         padding-bottom: 35px;
+        opacity: 0.3;
       }
       .feature-work__link {
         display: inline-block;
@@ -267,10 +269,10 @@ export default {
     line-height: 21px;
   }
   &__keywords {
-    margin-bottom: 35px;
     line-height: 18px;
     font-weight: $font-weight--light;
     margin-bottom: 0px;
+    opacity: 0.7;
   }
   &__link {
     display: none;

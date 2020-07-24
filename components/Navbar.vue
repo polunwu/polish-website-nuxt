@@ -10,7 +10,7 @@
         <span>TOP</span>
       </a>
     </div>
-    <div class="arrow">
+    <div ref="jsNavArrow" class="arrow">
       <a>
         <img src="~/assets/images/header_arrow.svg" alt="header-arrow" />
       </a>
@@ -116,12 +116,26 @@
 
 <script>
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+gsap.registerPlugin(ScrollTrigger)
 
 export default {
   data() {
     return {
       isOpen: false,
     }
+  },
+  mounted() {
+    // 進入 footer 時，隱藏箭頭
+    gsap.to(this.$refs.jsNavArrow, {
+      scrollTrigger: {
+        trigger: '#footer', // Footer.vue -> #footer 元件
+        start: 'top 99%',
+        toggleActions: 'play none none reset',
+      },
+      autoAlpha: 0,
+      duration: 0.5,
+    })
   },
   methods: {
     scrollTop() {
@@ -211,7 +225,7 @@ export default {
         .timeline()
         .to(jsTriggerLayer, {
           scale: 0.2,
-          duration: 0.3,
+          duration: 0.4,
           ease: 'cubic-bezier(0.33, 1, 0.68, 1)',
         })
         .to(
@@ -251,36 +265,36 @@ export default {
             ease: 'Power4.easeOut',
           },
         })
-        .fromTo(el, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.2 })
+        .fromTo(el, { x: '100%' }, { x: '0%', duration: 0.6 }, '0.35') // wait 0.35 for hamburger open
         .fromTo(
           jsMenuLogo,
           { autoAlpha: 0, y: 50 },
           { autoAlpha: 1, y: 0 },
-          '0.2'
+          '0.6'
         )
         .fromTo(
           jsMenuWork,
           { autoAlpha: 0, y: 50 },
           { autoAlpha: 1, y: 0 },
-          '0.3'
+          '0.7'
         )
         .fromTo(
           jsMenuAbout,
           { autoAlpha: 0, y: 50 },
           { autoAlpha: 1, y: 0 },
-          '0.4'
+          '0.8'
         )
         .fromTo(
           jsMenuContact,
           { autoAlpha: 0, y: 50 },
           { autoAlpha: 1, y: 0 },
-          '0.5'
+          '0.9'
         )
         .fromTo(
           jsMenuInfo,
           { autoAlpha: 0, y: 50 },
           { autoAlpha: 1, y: 0 },
-          '0.6'
+          '0.10'
         )
     },
     leaveMenu(el, done) {
@@ -297,7 +311,7 @@ export default {
         .timeline({
           onComplete: done, // complete js hook
           defaults: {
-            duration: 0.5,
+            duration: 0.6,
             ease: 'Power4.easeOut',
           },
         })
@@ -305,37 +319,37 @@ export default {
           jsMenuLogo,
           { autoAlpha: 1, y: 0 },
           { autoAlpha: 0, y: -150 },
-          '0'
+          '0.2'
         )
         .fromTo(
           jsMenuWork,
           { autoAlpha: 1, y: 0 },
           { autoAlpha: 0, y: -150 },
-          '0'
+          '0.2'
         )
         .fromTo(
           jsMenuAbout,
           { autoAlpha: 1, y: 0 },
           { autoAlpha: 0, y: -150 },
-          '0'
+          '0.2'
         )
         .fromTo(
           jsMenuContact,
           { autoAlpha: 1, y: 0 },
           { autoAlpha: 0, y: -150 },
-          '0'
+          '0.2'
         )
         .fromTo(
           jsMenuInfo,
           { autoAlpha: 1, y: 0 },
           { autoAlpha: 0, y: -150 },
-          '0'
+          '0.2'
         )
         .fromTo(
           el,
-          { autoAlpha: 1 },
-          { autoAlpha: 0, duration: 0.8, ease: 'Power4.easeIn' },
-          '0'
+          { x: '0%' },
+          { x: '100%', duration: 0.6, ease: 'Power4.easeIn' },
+          '0.2'
         )
     },
   },
@@ -379,7 +393,7 @@ nav {
   position: fixed;
   right: 38px;
   bottom: 40px;
-  animation: arrow_fade_down 1.5s cubic-bezier(0.33, 1, 0.68, 1) infinite;
+  animation: arrow_fade_down 1.2s cubic-bezier(0.25, 1, 0.5, 1) infinite;
 
   @media screen and (max-width: 414px) {
     right: 18px;
@@ -387,15 +401,18 @@ nav {
 }
 @keyframes arrow_fade_down {
   0% {
-    transform: translate(0, -10px);
-    opacity: 0;
+    transform: translate(0, -15px);
+    opacity: 0.1;
   }
-  60% {
+  20% {
+    opacity: 1;
+  }
+  80% {
     opacity: 1;
   }
   100% {
     transform: translate(0, 10px);
-    opacity: 0;
+    opacity: 0.1;
   }
 }
 .menu-trigger {
@@ -448,22 +465,24 @@ nav {
   &__menu {
     position: fixed;
     top: 0;
-    left: 0;
+    right: 0;
     width: 100vw;
     height: 100vh;
+    max-width: 768px;
+    transform: translateX(100%);
     overflow: hidden;
     background-color: $primary-color;
   }
   &__logo {
     position: absolute;
     top: 63px;
-    left: 114px;
+    left: 47px;
     width: 94px;
     height: 55px;
   }
   &__links {
     position: absolute;
-    left: 114px;
+    left: 47px;
     top: 183px;
     font-size: 48px;
     line-height: 58px;
@@ -474,7 +493,7 @@ nav {
   }
   &__info {
     position: absolute;
-    left: 114px;
+    left: 30px;
     bottom: 70px;
     display: flex;
 

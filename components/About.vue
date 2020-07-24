@@ -207,7 +207,6 @@ export default {
     .record__target {
       font-size: 18px;
       font-weight: $font-weight--medium;
-      opacity: 0.37;
       line-height: 25px;
       margin-top: 0px;
       margin-bottom: 141px;

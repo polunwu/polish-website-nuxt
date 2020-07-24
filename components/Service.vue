@@ -8,11 +8,11 @@
       </li>
       <li class="service__item">
         <span class="service__index">02</span>
-        <span class="service__name js-scroll-t-service">Website</span>
+        <span class="service__name js-scroll-t-service">Design</span>
       </li>
       <li class="service__item">
         <span class="service__index">03</span>
-        <span class="service__name js-scroll-t-service">System</span>
+        <span class="service__name js-scroll-t-service">Development</span>
       </li>
     </ul>
   </section>
@@ -47,6 +47,7 @@ export default {
 <style lang="scss">
 .service {
   padding: 149px 150px 214px 150px;
+  cursor: default;
 
   @media screen and (max-width: 768px) {
     padding: 126px 56px 193px 56px;
@@ -91,7 +92,6 @@ export default {
     line-height: 91px;
     font-weight: $font-weight--light;
     padding-left: 35px;
-    cursor: pointer;
 
     @media screen and (max-width: 524px) {
       font-size: 50px;
@@ -99,23 +99,24 @@ export default {
       padding-left: 26px;
     }
   }
-  &__name:after {
-    display: block;
-    content: '';
-    border-bottom: solid 4px $secondary-color;
-    transform-origin: 100% 50%;
-    transform: scaleX(0);
-    transition: transform 500ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  }
-  &__item:hover {
-    .service__index {
-      opacity: 0;
-      transform: translate3d(-20px, 0px, 0px);
-    }
-    .service__name:after {
-      transform-origin: 0% 50%;
-      transform: scaleX(1);
-    }
-  }
+  // 因為目前還無法點擊，hover 特效暫時拿掉
+  // &__name:after {
+  //   display: block;
+  //   content: '';
+  //   border-bottom: solid 4px $secondary-color;
+  //   transform-origin: 100% 50%;
+  //   transform: scaleX(0);
+  //   transition: transform 500ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  // }
+  // &__item:hover {
+  //   .service__index {
+  //     opacity: 0;
+  //     transform: translate3d(-20px, 0px, 0px);
+  //   }
+  //   .service__name:after {
+  //     transform-origin: 0% 50%;
+  //     transform: scaleX(1);
+  //   }
+  // }
 }
 </style>
