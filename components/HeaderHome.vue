@@ -48,6 +48,7 @@ export default {}
 
     @media screen and (max-width: 414px) {
       left: 18px;
+      top: calc(100% - 249px);
     }
   }
   .email > a {
