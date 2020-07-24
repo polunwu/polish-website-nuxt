@@ -41,7 +41,7 @@ export default {}
   .email {
     position: absolute;
     left: 34px;
-    top: calc(100vh - 209px);
+    top: calc(100% - 209px);
     color: $secondary-color;
     font-size: 15px;
     writing-mode: vertical-rl;
