@@ -42,13 +42,14 @@ export default {}
   .email {
     position: fixed;
     left: 34px;
-    top: calc(100vh - 209px);
+    top: calc(100% - 209px);
     color: $secondary-color;
     font-size: 15px;
     writing-mode: vertical-rl;
 
     @media screen and (max-width: 414px) {
       left: 18px;
+      top: calc(100% - 259px);
     }
   }
   .email > a {
