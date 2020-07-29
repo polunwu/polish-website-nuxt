@@ -17,16 +17,16 @@
       <div
         ref="jsGradientLayer"
         class="layer"
-        @touchstart="handleHold"
-        @touchend="handleUnHold"
+        @touchstart.prevent="handleHold"
+        @touchend.prevent="handleUnHold"
         @mousedown="handleHold"
         @mouseup="handleUnHold"
       ></div>
       <div
         ref="jsHolder"
         class="holder"
-        @touchstart="handleHold"
-        @touchend="handleUnHold"
+        @touchstart.prevent="handleHold"
+        @touchend.prevent="handleUnHold"
         @mousedown="handleHold"
         @mouseup="handleUnHold"
       >
@@ -175,7 +175,7 @@ export default {
         {
           scale: 1.04,
           duration: 0.55,
-          ease: 'Circ.easeOut',
+          ease: 'linear',
           yoyo: true,
         },
         '0.1'
