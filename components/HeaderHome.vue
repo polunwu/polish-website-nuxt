@@ -2,12 +2,15 @@
   <header class="header-home">
     <div>
       <video
+        ref="jsHeroVideo"
+        poster=""
         class="video-background"
         autoplay="true"
         loop=""
         muted=""
         playsinline=""
         preload="auto"
+        data-poster="/header_poster.png"
       >
         <source
           src="https://storage.googleapis.com/polish_shop_bucket/polish-man-compressed.mp4"
@@ -121,11 +124,29 @@ export default {
     },
   },
   mounted() {
+    const { jsHeroVideo, jsGradientLayer, jsHolderPulse, jsHolder } = this.$refs
+    // 偵測 Safari 省電模式
+    if (jsHeroVideo.paused) {
+      ;(async function playLoaderVideo() {
+        try {
+          await jsHeroVideo.play()
+        } catch (err) {
+          // eslint-disable-next-line
+          console.log(err)
+          if (jsHeroVideo.getAttribute('poster') === '') {
+            jsHeroVideo.setAttribute(
+              'poster',
+              jsHeroVideo.getAttribute('data-poster')
+            )
+          }
+        }
+      })()
+    }
+
     // 動態改變 dashoffset 的數值: 336 -> 0%, 0 -> 100%
     const barCounter = {
       dashoffset: 336,
     }
-    const { jsGradientLayer, jsHolderPulse, jsHolder } = this.$refs
     // 定義時間軸
     this.timeline = gsap
       .timeline({ paused: true })
@@ -241,9 +262,9 @@ export default {
     }
 
     @media screen and (max-width: 1024px) {
-      top: 77%;
+      top: 82%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
     }
   }
   .email {
