@@ -5,12 +5,12 @@
         <img src="~/assets/images/header_logo.svg" alt="Polish Design Logo" />
       </nuxt-link>
     </div>
-    <div class="top" @click="scrollTop">
+    <div v-if="currentRouteName !== 'index'" class="top" @click="scrollTop">
       <a>
         <span>TOP</span>
       </a>
     </div>
-    <div ref="jsNavArrow" class="arrow">
+    <div v-if="currentRouteName !== 'index'" ref="jsNavArrow" class="arrow">
       <a>
         <img src="~/assets/images/header_arrow.svg" alt="header-arrow" />
       </a>
@@ -125,17 +125,24 @@ export default {
       isOpen: false,
     }
   },
+  computed: {
+    currentRouteName() {
+      return this.$route.name
+    },
+  },
   mounted() {
     // 進入 footer 時，隱藏箭頭
-    gsap.to(this.$refs.jsNavArrow, {
-      scrollTrigger: {
-        trigger: '#footer', // Footer.vue -> #footer 元件
-        start: 'top 99%',
-        toggleActions: 'play none none reset',
-      },
-      autoAlpha: 0,
-      duration: 0.5,
-    })
+    if (document.querySelector('#footer')) {
+      gsap.to(this.$refs.jsNavArrow, {
+        scrollTrigger: {
+          trigger: '#footer', // Footer.vue -> #footer 元件
+          start: 'top 99%',
+          toggleActions: 'play none none reset',
+        },
+        autoAlpha: 0,
+        duration: 0.5,
+      })
+    }
   },
   methods: {
     scrollTop() {
@@ -194,7 +201,9 @@ export default {
       return gsap
         .timeline()
         .to(jsTriggerLayer, {
-          scale: 1.2,
+          scale: 1,
+          x: '+=10',
+          y: '-=10',
           duration: 0.4,
           ease: 'cubic-bezier(0.33, 1, 0.68, 1)',
         })
@@ -225,6 +234,8 @@ export default {
         .timeline()
         .to(jsTriggerLayer, {
           scale: 0.2,
+          x: 0,
+          y: 0,
           duration: 0.4,
           ease: 'cubic-bezier(0.33, 1, 0.68, 1)',
         })
@@ -432,8 +443,8 @@ nav {
   &__layer {
     position: absolute;
     background-color: white;
-    width: 180px;
-    height: 180px;
+    width: 156px;
+    height: 156px;
     z-index: -1;
     top: 50%;
     left: 50%;
@@ -467,11 +478,11 @@ nav {
     top: 0;
     right: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     max-width: 768px;
     transform: translateX(100%);
     overflow: hidden;
-    background-color: $primary-color;
+    background-color: #010101;
   }
   &__logo {
     position: absolute;

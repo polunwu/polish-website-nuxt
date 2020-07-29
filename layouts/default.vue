@@ -5,7 +5,7 @@
     </transition>
     <Navbar />
     <Nuxt />
-    <Footer />
+    <Footer v-if="currentRouteName !== 'index'" />
   </div>
 </template>
 
@@ -24,6 +24,11 @@ export default {
     return {
       isLoading: true,
     }
+  },
+  computed: {
+    currentRouteName() {
+      return this.$route.name
+    },
   },
   mounted() {
     this.isLoading = false
