@@ -27,7 +27,6 @@ export default {
           'initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, width=device-width',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   /*
    ** Global CSS
