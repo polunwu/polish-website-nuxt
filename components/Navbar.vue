@@ -10,11 +10,6 @@
         <span>TOP</span>
       </a>
     </div>
-    <div v-if="currentRouteName !== 'index'" ref="jsNavArrow" class="arrow">
-      <a>
-        <img src="~/assets/images/header_arrow.svg" alt="header-arrow" />
-      </a>
-    </div>
     <transition :css="false" @enter="enterMenu" @leave="leaveMenu">
       <div v-show="isOpen" ref="jsMenu" class="navigation__menu">
         <div ref="jsMenuLogo" class="navigation__logo">
@@ -107,6 +102,10 @@
         class="menu-trigger__bar menu-trigger__bar--middle"
       ></i>
       <i
+        ref="jsTriggerBarCross"
+        class="menu-trigger__bar menu-trigger__bar--cross"
+      ></i>
+      <i
         ref="jsTriggerBarBot"
         class="menu-trigger__bar menu-trigger__bar--bottom"
       ></i>
@@ -130,20 +129,7 @@ export default {
       return this.$route.name
     },
   },
-  mounted() {
-    // 進入 footer 時，隱藏箭頭
-    if (document.querySelector('#footer')) {
-      gsap.to(this.$refs.jsNavArrow, {
-        scrollTrigger: {
-          trigger: '#footer', // Footer.vue -> #footer 元件
-          start: 'top 99%',
-          toggleActions: 'play none none reset',
-        },
-        autoAlpha: 0,
-        duration: 0.5,
-      })
-    }
-  },
+  mounted() {},
   methods: {
     scrollTop() {
       window.scroll({
@@ -153,8 +139,13 @@ export default {
       })
     },
     toggleNav() {
-      const jsTriggerBarTop = this.$refs.jsTriggerBarTop
-      const jsTriggerBarBot = this.$refs.jsTriggerBarBot
+      const {
+        jsTriggerBarTop,
+        jsTriggerBarBot,
+        jsTriggerBarMid,
+        jsTriggerBarCross,
+      } = this.$refs
+
       if (!this.isOpen) {
         this.openHamgurger()
           .to(
@@ -162,6 +153,24 @@ export default {
             {
               x: -30,
               autoAlpha: 0,
+              duration: 0.4,
+            },
+            '0'
+          )
+          .to(
+            jsTriggerBarMid,
+            {
+              scaleX: 1.1,
+              rotate: '-45deg',
+              duration: 0.4,
+            },
+            '0'
+          )
+          .to(
+            jsTriggerBarCross,
+            {
+              scaleX: 6.875,
+              rotate: '45deg',
               duration: 0.4,
             },
             '0'
@@ -195,15 +204,14 @@ export default {
       }
     },
     openHamgurger() {
-      const jsTriggerLayer = this.$refs.jsTriggerLayer
-      const jsTriggerBarTop = this.$refs.jsTriggerBarTop
-      const jsTriggerBarBot = this.$refs.jsTriggerBarBot
+      const { jsTriggerLayer, jsTriggerBarTop, jsTriggerBarBot } = this.$refs
+
       return gsap
         .timeline()
         .to(jsTriggerLayer, {
           scale: 1,
-          x: '+=10',
-          y: '-=10',
+          x: '+=12',
+          y: '-=12',
           duration: 0.4,
           ease: 'cubic-bezier(0.33, 1, 0.68, 1)',
         })
@@ -227,9 +235,14 @@ export default {
         )
     },
     closeHamburger() {
-      const jsTriggerLayer = this.$refs.jsTriggerLayer
-      const jsTriggerBarTop = this.$refs.jsTriggerBarTop
-      const jsTriggerBarBot = this.$refs.jsTriggerBarBot
+      const {
+        jsTriggerLayer,
+        jsTriggerBarTop,
+        jsTriggerBarBot,
+        jsTriggerBarMid,
+        jsTriggerBarCross,
+      } = this.$refs
+
       return gsap
         .timeline()
         .to(jsTriggerLayer, {
@@ -244,6 +257,24 @@ export default {
           {
             x: 0,
             autoAlpha: 1,
+            duration: 0.2,
+          },
+          '0'
+        )
+        .to(
+          jsTriggerBarMid,
+          {
+            scaleX: 1,
+            rotate: 0,
+            duration: 0.2,
+          },
+          '0'
+        )
+        .to(
+          jsTriggerBarCross,
+          {
+            scaleX: 1,
+            rotate: 0,
             duration: 0.2,
           },
           '0'
@@ -467,6 +498,14 @@ nav {
     margin: 0px;
   }
 
+  &__bar--cross {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4px;
+  }
+
   @media screen and (max-width: 414px) {
     top: 19px;
     right: 14px;
@@ -482,7 +521,7 @@ nav {
     max-width: 768px;
     transform: translateX(100%);
     overflow: hidden;
-    background-color: #010101;
+    background-color: #121212;
   }
   &__logo {
     position: absolute;
@@ -518,7 +557,7 @@ nav {
   &__email,
   &__follow-us {
     padding-left: 26.5px;
-    border-left: 1px solid $secondary-color;
+    border-left: 1px solid #121212;
     p {
       font-weight: $font-weight--light;
       margin: 0;
@@ -583,15 +622,15 @@ nav {
       margin-bottom: 3vh;
     }
     &__info {
-      bottom: 35px;
+      bottom: 10vh;
       flex-direction: column;
     }
     &__messenger {
       .messenger__link {
-        margin: 8px 0px 3vh 130px;
-        height: 13vh;
+        margin: -16px 0px 3.2vh 140px;
+        height: 55px;
         img {
-          width: 13vh;
+          width: 55px;
         }
       }
     }
@@ -615,6 +654,9 @@ nav {
     }
     &__link {
       margin-bottom: 2vh;
+    }
+    &__info {
+      bottom: 50px;
     }
     &__email {
       .email__link {
