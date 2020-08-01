@@ -32,6 +32,8 @@
         @touchend.prevent="handleUnHold"
         @mousedown="handleHold"
         @mouseup="handleUnHold"
+        @mouseenter="mouseEnterHold"
+        @mouseleave="mouseOutHold"
       >
         <svg
           ref="jsHolderPulse"
@@ -59,6 +61,15 @@
         >
           <g data-name="Group 71">
             <g data-name="Path 222" fill="none">
+              <circle
+                ref="jsHolderCircleLayer"
+                class="holder__circle-layer"
+                cx="56"
+                cy="56"
+                r="56"
+                stroke-width="none"
+                fill="#fff"
+              />
               <path
                 d="M56 0a55.832 55.832 0 0126.4 6.618 56.72 56.72 0 0119.126 16.759A56 56 0 1156 0z"
               />
@@ -113,6 +124,8 @@ export default {
     return {
       timeline: null,
       dashoffset: 336,
+      circleHover: null,
+      pulse: null,
     }
   },
   watch: {
@@ -124,7 +137,14 @@ export default {
     },
   },
   mounted() {
-    const { jsHeroVideo, jsGradientLayer, jsHolderPulse, jsHolder } = this.$refs
+    const {
+      jsHeroVideo,
+      jsGradientLayer,
+      jsHolderPulse,
+      jsHolder,
+      jsHolderCircleLayer,
+    } = this.$refs
+
     // 偵測 Safari 省電模式
     if (jsHeroVideo.paused) {
       ;(async function playLoaderVideo() {
@@ -179,14 +199,14 @@ export default {
       .timeline({ repeat: -1 })
       .to(jsHolderPulse, {
         scale: 1.8,
-        duration: 1.1,
+        duration: 1.65,
         ease: 'Back.easeInOut',
       })
       .to(
         jsHolderPulse,
         {
           autoAlpha: 0.01,
-          duration: 1.1,
+          duration: 1.65,
           ease: 'Circ.easeOut',
         },
         '0'
@@ -195,23 +215,43 @@ export default {
         jsHolder,
         {
           scale: 1.04,
-          duration: 0.55,
+          duration: 0.825,
           ease: 'linear',
           yoyo: true,
         },
         '0.1'
       )
+
+    // 滑鼠互動
+    this.circleUp = gsap.timeline({ paused: true }).fromTo(
+      jsHolderCircleLayer,
+      { opacity: 0, scale: 0 },
+      {
+        opacity: 0.3,
+        scale: 1,
+        duration: 0.35,
+        ease: 'Power1.easeOut',
+      }
+    )
   },
   methods: {
     handleHold(e) {
       // 按住時以一倍速正轉
       this.timeline.timeScale(1).play()
+      this.circleUp.timeScale(1).play()
     },
     handleUnHold(e) {
       // 放開時以零點五倍速反轉
       this.timeline.timeScale(0.5).reverse()
+      this.circleUp.timeScale(0.5).reverse()
     },
     leaveToWork() {},
+    mouseEnterHold(e) {
+      this.circleUp.timeScale(1).play()
+    },
+    mouseOutHold(e) {
+      this.circleUp.timeScale(1).reverse()
+    },
   },
 }
 </script>
@@ -252,6 +292,12 @@ export default {
     &__hold,
     &__bar {
       position: absolute;
+    }
+
+    &__circle-layer {
+      transform: translate(50% 50%) scale(0);
+      transform-origin: 56px 56px; // Safari: use absolute coordinates like px but not 'center' or '50%'
+      opacity: 0;
     }
 
     #bar {
