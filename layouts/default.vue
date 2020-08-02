@@ -30,7 +30,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.playLeaveLoaderAnimation()
-    }, 500)
+    }, 200)
   },
   methods: {
     playLeaveLoaderAnimation() {
@@ -94,7 +94,8 @@ export default {
         {
           hid: 'og:image',
           property: 'og:image',
-          content: '',
+          content:
+            'https://storage.googleapis.com/polish-design.com.tw/og-image.jpg',
         },
         {
           hid: 'og:url',
@@ -142,7 +143,8 @@ export default {
         {
           hid: 'twitter:image',
           property: 'twitter:image',
-          content: '',
+          content:
+            'https://storage.googleapis.com/polish-design.com.tw/og-image.jpg',
         },
         // fb
         {

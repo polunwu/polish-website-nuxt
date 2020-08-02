@@ -3,9 +3,16 @@
     <header class="header-work">
       <div
         class="header-work__cover-image-wrapper"
-        :style="{ backgroundImage: `url(${coverImageUrl})` }"
+        :style="{
+          backgroundColor: bgColor,
+        }"
       >
-        <div ref="jsContent" class="header-work__content">
+        <img :src="coverImageUrl" alt="" class="header-work__cover-image" />
+        <div
+          ref="jsContent"
+          class="header-work__content"
+          :style="{ color: titleColor }"
+        >
           <span class="header-work__number">{{ numString }}</span>
           <h3 ref="jsContent" class="header-work__title">
             {{ title }}
@@ -51,6 +58,14 @@ export default {
       type: String,
       default: '',
     },
+    bgColor: {
+      type: String,
+      default: '#121212',
+    },
+    titleColor: {
+      type: String,
+      default: '#fff',
+    },
   },
   mounted() {
     const texts = this.$refs.jsContent.children
@@ -83,10 +98,26 @@ export default {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    overflow: hidden;
 
     @media screen and (max-width: 768px) {
       justify-content: left;
       align-items: flex-start;
+    }
+  }
+  &__cover-image {
+    position: absolute;
+    right: -6.5vw;
+    bottom: 0;
+    width: 50vw;
+
+    @media screen and (max-width: 767px) {
+      right: -20vw;
+      width: 140vw;
+    }
+    @media screen and (max-width: 414px) and (min-aspect-ratio: 4/7) {
+      right: -10vw;
+      width: 120vw;
     }
   }
   &__content {
@@ -100,6 +131,9 @@ export default {
       margin-left: 18px;
       margin-right: 18px;
       max-width: 270px;
+    }
+    @media screen and (max-width: 414px) and (min-aspect-ratio: 4/7) {
+      margin-top: 20vh;
     }
   }
   &__number {
@@ -119,6 +153,11 @@ export default {
       line-height: 36px;
       padding-bottom: 0px;
       margin-bottom: 48px;
+    }
+
+    @media screen and (max-width: 414px) and (min-aspect-ratio: 4/7) {
+      margin-top: 15px;
+      margin-bottom: 20px;
     }
   }
   &__subtitle,

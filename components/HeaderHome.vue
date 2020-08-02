@@ -13,7 +13,7 @@
         data-poster="/header_poster.png"
       >
         <source
-          src="https://storage.googleapis.com/polish_shop_bucket/polish-man-compressed.mp4"
+          src="https://storage.googleapis.com/polish-design.com.tw/polish-man-compressed.mp4"
           type="video/mp4"
         />
       </video>
