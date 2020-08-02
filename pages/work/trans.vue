@@ -58,7 +58,7 @@ export default {
   data() {
     return {
       work: {
-        id: 3,
+        id: 4,
         bgColor: '#83ECFC',
         titleColor: '#3B3736',
         numString: '04',
@@ -97,7 +97,7 @@ export default {
     }
   },
   head: {
-    title: 'Shift Studio 轉轉影像 - 磨人設計 | Polish Design',
+    title: '永齡基金會 - 磨人設計 | Polish Design',
   },
 }
 </script>

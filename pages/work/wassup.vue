@@ -7,14 +7,22 @@
       :client="work.client"
       :keywords="work.keywords"
       :cover-image-url="work.coverImageUrl"
+      :bg-color="work.bgColor"
+      :title-color="work.titleColor"
     />
     <div class="page-work__article-wrapper">
       <Paragraph :content="work.content[0]" />
       <ParagraphImage :url="work.paragraphImageUrl" />
       <Quote :quote="work.quote" />
       <FullWidthImage :url="work.fullWidthImageUrl[0]" />
-      <Paragraph :content="work.content[1]" />
+      <Spacer />
       <FullWidthImage :url="work.fullWidthImageUrl[1]" />
+      <Paragraph :content="work.content[1]" />
+      <FullWidthImage :url="work.fullWidthImageUrl[2]" />
+      <Spacer />
+      <FullWidthImage :url="work.fullWidthImageUrl[3]" />
+      <Paragraph :content="work.content[2]" />
+      <FullWidthImage :url="work.fullWidthImageUrl[4]" />
       <SeeMore :link="work.link" />
       <TechScope :scopes="work.scopes" />
     </div>
@@ -31,6 +39,7 @@ import FullWidthImage from '@/components/FullWidthImage.vue'
 import SeeMore from '@/components/SeeMore.vue'
 import TechScope from '@/components/TechScope.vue'
 import Members from '@/components/Members.vue'
+import Spacer from '@/components/Spacer.vue'
 
 export default {
   components: {
@@ -42,35 +51,42 @@ export default {
     SeeMore,
     TechScope,
     Members,
+    Spacer,
   },
   data() {
     return {
       work: {
-        id: 2,
-        numString: '02',
+        id: 5,
+        bgColor: '#019165',
+        titleColor: '#FFFFFF',
+        numString: '05',
         name: 'wassup',
         title: 'KOL 的跨界篇章一觸即發，跨界經營、創業、販售',
         category: 'Website',
         client: 'Wassup 挖砂貓砂',
         keywords: 'Landing Page',
         thumbnailImageUrl: 'https://via.placeholder.com/615x346',
-        coverImageUrl: 'https://via.placeholder.com/615x346',
-        paragraphImageUrl: 'https://via.placeholder.com/780x450',
+        coverImageUrl: require('~/assets/images/p-wassup/p-wassup_cover.png'),
+        paragraphImageUrl: require('~/assets/images/p-wassup/p-wassup_work_0_780x450@2x.jpg'),
         fullWidthImageUrl: [
-          'https://via.placeholder.com/1280x1134',
-          'https://via.placeholder.com/1280x935',
+          require('~/assets/images/p-wassup/p-wassup_work_1.jpg'),
+          require('~/assets/images/p-wassup/p-wassup_work_2.jpg'),
+          require('~/assets/images/p-wassup/p-wassup_work_3.jpg'),
+          require('~/assets/images/p-wassup/p-wassup_work_4.jpg'),
+          require('~/assets/images/p-wassup/p-wassup_work_5.jpg'),
         ],
         content: [
-          '翻轉印象、探索傑作\n\n轉轉是囊括視覺創作各項領域的影像團隊，成員們揉合了各種特質，年輕、活力、創意、投入，在成立之初的三年之間，爆炸性地累積大量作品。\n\n設計轉轉團隊官網的過程，是一種多重發散與凝結的體驗，最後歸納出兩個執行重點：「翻轉」與「探索」。其一在於，以轉轉們（Shifters）心境上的轉變為契機，重新審視品牌定位，以釐清轉轉的視覺形象。我們抽取了轉轉成員們間高速協作、緊密契合的工作特質，具象化為ㄧ動作靈巧的精密機器，加上 SHIFT 的翻轉意涵，貫穿整個網站視覺主軸。翻轉，可以再翻轉。',
-          '其二，網站的功能性著重於「作品的呈現」，我們設計出「探索式」的體驗，讓使用者能像瀏覽地圖般，不分階層地探索所有作品，因為，每個作品與合作夥伴的重要程度都是同等分量的（當然我們也設計了不錯的分類標籤~ )。',
+          '來自饒舌歌手的讚美 — “KOL 的事業就該如此” by 砂石大亨\n\n音樂創作？天天挖砂？賣自己的貓砂？\n\nWHY NOT.\n\nＷassup 挖砂貓砂，骨子裡繼承了饒舌歌手們義無反顧的嘻哈精神。市場上沒有合適的貓砂？沒關係，自己出一款。我們協助 Ｗassup 製作了一頁式的完整體驗。從品牌精神、用戶數據、人氣貓奴企劃，再到製砂程序、貓砂工法，毫不保留的娓娓道來。只為了，讓廣大的貓奴們，清爽又輕鬆地在滑動與點擊之間，為至上貓皇，奉上一盆，絕妙好砂。',
+          '顏色總是網站設計之初最重要需要規劃的部分，青綠色與青白色兩個有趣得搭配正是 Wassup 貓砂最令人印象深刻的重點之一，所以在許多 icon 及文字配色的選擇都環繞著他們。',
+          '中間大量的顧客使用照片，我們期待用戶感受到這個商品是備受許多使用者喜愛的，同樣地我們在許多環節規劃了很有趣的設計：突兀的工作服流程、饒舌歌手們的節目影片、塞入新台幣的產品特色，每個環節都嘗試突破人們對一頁式網頁的框架。\n\n為什麼我們將這次網站的主視覺風格打造在叢林中呢？事實上，這算是我們私心想嘗試的創意哈哈哈～同時符合產品年度的 Slogan 「從零『砂』出一條血路」實驗了情境場景在 RWD （響應式設計）的彈性底下是不是也能夠有很棒的使用者體驗，最終效果客戶與我們都非常喜歡甚至驚艷。',
         ],
         quote: {
           content:
-            '探索地圖式的呈現方式，傳達作品種類的「量」及「廣」，透過探索營造出有趣的體驗。',
-          by: 'Kevin 家豪',
-          job: 'Polish Design Art Director',
+            '我相信一頁式商品頁除了強調功能、價格、性價比，獨特的視覺更能夠讓品牌深植消費者心中，印象往往更深刻。',
+          by: 'Kevin',
+          job: 'Design Director',
         },
-        link: 'www.shiftstudioco.com',
+        link: 'wassup.com.tw',
         scopes: {
           branding: ['品牌形象規劃', '品牌色彩計畫', '品牌視覺識別'],
           design: [
@@ -79,13 +95,13 @@ export default {
             '使用者體驗（UX）',
             '使用者介面設計（UI）',
           ],
-          development: ['使用者故事', '使用者體驗（UX）'],
+          development: ['前端工程開發', '特效製作'],
         },
       },
     }
   },
   head: {
-    title: 'Shift Studio 轉轉影像 - 磨人設計 | Polish Design',
+    title: 'Wassup 挖砂貓砂 - 磨人設計 | Polish Design',
   },
 }
 </script>
