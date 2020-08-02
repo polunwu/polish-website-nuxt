@@ -99,7 +99,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: 'http://polish-design.com.tw/',
+          content: 'https://polish-design.com.tw/',
         },
         {
           property: 'og:video',
