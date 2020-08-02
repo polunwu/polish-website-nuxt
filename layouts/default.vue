@@ -30,7 +30,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.playLeaveLoaderAnimation()
-    }, 1000)
+    }, 500)
   },
   methods: {
     playLeaveLoaderAnimation() {
