@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition name="fade">
+    <transition :css="false" @leave="leaveLoader">
       <Loader v-show="isLoading" />
     </transition>
     <Navbar />
@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
 import Loader from '@/components/Loader.vue'
 import Navbar from '@/components/Navbar.vue'
 import Footer from '@/components/Footer.vue'
@@ -32,6 +33,44 @@ export default {
   },
   mounted() {
     this.isLoading = false
+  },
+  methods: {
+    leaveLoader(el, done) {
+      gsap
+        .timeline({
+          delay: 1,
+          defaults: {
+            ease: 'cubic-bezier(0.33, 1, 0.68, 1)',
+          },
+        })
+        .to(
+          el.firstChild,
+          {
+            y: -20,
+            duration: 1,
+          },
+          '0'
+        )
+        .to(
+          el.firstChild,
+          {
+            autoAlpha: 0,
+            duration: 0.6,
+          },
+          '0'
+        )
+        .to(
+          el,
+          {
+            autoAlpha: 0,
+            duration: 0.6,
+          },
+          '1'
+        ) // timeline total 2.6 secs
+      setTimeout(() => {
+        done()
+      }, 3000) // 3 secs for trigger next tick
+    },
   },
   head() {
     return {
@@ -171,33 +210,4 @@ export default {
 
 <style lang="scss">
 @import '~/assets/scss/_general.scss';
-
-.fade-enter-active {
-  transition: opacity 1s;
-  .loader__logo {
-    transition: opacity 0.6s;
-    transition-delay: 1s;
-  }
-}
-.fade-leave-active {
-  transition: opacity 1.2s;
-  transition-delay: 0.6s;
-  .loader__logo {
-    transition: opacity 0.6s, transform 1s cubic-bezier(0.33, 1, 0.68, 1);
-  }
-}
-.fade-enter {
-  opacity: 0;
-  .loader__logo {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-}
-.fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  .loader__logo {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-}
 </style>

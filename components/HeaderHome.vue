@@ -147,20 +147,20 @@ export default {
 
     // 偵測 Safari 省電模式
     if (jsHeroVideo.paused) {
-      ;(async function playLoaderVideo() {
-        try {
-          await jsHeroVideo.play()
-        } catch (err) {
-          // eslint-disable-next-line
-          console.log(err)
-          if (jsHeroVideo.getAttribute('poster') === '') {
-            jsHeroVideo.setAttribute(
-              'poster',
-              jsHeroVideo.getAttribute('data-poster')
-            )
-          }
-        }
-      })()
+      // ;(async function playLoaderVideo() {
+      //   try {
+      //     await jsHeroVideo.play()
+      //   } catch (err) {
+      //     // eslint-disable-next-line
+      //     console.log(err)
+      //     if (jsHeroVideo.getAttribute('poster') === '') {
+      //       jsHeroVideo.setAttribute(
+      //         'poster',
+      //         jsHeroVideo.getAttribute('data-poster')
+      //       )
+      //     }
+      //   }
+      // })()
     }
 
     // 動態改變 dashoffset 的數值: 336 -> 0%, 0 -> 100%
