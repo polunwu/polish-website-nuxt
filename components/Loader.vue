@@ -1,5 +1,5 @@
 <template>
-  <div class="loader">
+  <div class="loader js-loader">
     <img
       class="loader__logo"
       src="~/assets/images/header_logo.svg"

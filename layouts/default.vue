@@ -1,8 +1,6 @@
 <template>
   <div>
-    <transition :css="false" @leave="leaveLoader">
-      <Loader v-show="isLoading" />
-    </transition>
+    <Loader />
     <Navbar />
     <Nuxt />
     <Footer v-if="currentRouteName !== 'index'" />
@@ -22,9 +20,7 @@ export default {
     Footer,
   },
   data() {
-    return {
-      isLoading: true,
-    }
+    return {}
   },
   computed: {
     currentRouteName() {
@@ -32,10 +28,14 @@ export default {
     },
   },
   mounted() {
-    this.isLoading = false
+    setTimeout(() => {
+      this.playLeaveLoaderAnimation()
+    }, 1000)
   },
   methods: {
-    leaveLoader(el, done) {
+    playLeaveLoaderAnimation() {
+      const el = document.querySelector('.js-loader')
+
       gsap
         .timeline({
           delay: 1,
@@ -67,9 +67,6 @@ export default {
           },
           '1'
         ) // timeline total 2.6 secs
-      setTimeout(() => {
-        done()
-      }, 3000) // 3 secs for trigger next tick
     },
   },
   head() {
