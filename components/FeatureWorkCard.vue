@@ -3,7 +3,7 @@
     <nuxt-link :to="/work/ + work.name" class="feature-work__thumbnail-wrapper">
       <div
         ref="jsThumbnail"
-        class="feature-work__thumbnail js-scroll-t-work"
+        class="feature-work__thumbnail js-scroll-t-work js-anime-img"
         :style="{ backgroundImage: `url(${work.thumbnailImageUrl})` }"
         @click="pageTargetClicked"
         @mouseenter="cardEnter"
@@ -11,13 +11,15 @@
       ></div>
     </nuxt-link>
     <div ref="jsContent" class="feature-work__content">
-      <span ref="jsNumber" class="feature-work__number js-scroll-t-work">{{
-        work.numString
-      }}</span>
+      <span
+        ref="jsNumber"
+        class="feature-work__number js-scroll-t-work js-anime-imgText"
+        >{{ work.numString }}</span
+      >
       <nuxt-link :to="/work/ + work.name">
         <h3
           ref="jsTitle"
-          class="feature-work__title js-scroll-t-work"
+          class="feature-work__title js-scroll-t-work js-anime-text"
           @click="pageTargetClicked"
           @mouseenter="cardEnter"
           @mouseleave="cardLeave"
@@ -25,17 +27,23 @@
           {{ work.title }}
         </h3>
       </nuxt-link>
-      <h4 ref="jsSubtitle" class="feature-work__subtitle js-scroll-t-work">
+      <h4
+        ref="jsSubtitle"
+        class="feature-work__subtitle js-scroll-t-work js-anime-imgText"
+      >
         <span class="subtitle__category">{{ work.category }}</span
         >&nbsp;-&nbsp;
         <span class="subtitle__client">{{ work.client }}</span>
       </h4>
-      <p ref="jsKeywords" class="feature-work__keywords js-scroll-t-work">
+      <p
+        ref="jsKeywords"
+        class="feature-work__keywords js-scroll-t-work js-anime-text"
+      >
         {{ work.keywords }}
       </p>
       <nuxt-link
         :to="/work/ + work.name"
-        class="feature-work__link js-scroll-t-work"
+        class="feature-work__link js-scroll-t-work js-anime-text"
         ><span @click="pageTargetClicked">完整內容</span></nuxt-link
       >
     </div>

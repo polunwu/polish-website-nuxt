@@ -1,7 +1,9 @@
 <template>
   <section id="feature-work" class="feature-work">
     <div class="feature-work__container">
-      <h2 class="feature-work__label js-scroll-t-work">Works</h2>
+      <h2 class="feature-work__label js-scroll-t-work js-anime-text">
+        Our work
+      </h2>
       <ul class="feature-work__list">
         <FeatureWorkCard v-for="work in works" :key="work.id" :work="work" />
       </ul>
@@ -21,6 +23,7 @@ export default {
   },
   data() {
     return {
+      viewRect: null,
       works: [
         {
           id: 1,
@@ -86,31 +89,116 @@ export default {
     }
   },
   mounted() {
-    // register scroll trigger elements
+    // 取得裝置寬高
+    this.viewRect = this.getViewRect()
+
+    // 設定初始值
     gsap.utils.toArray('.js-scroll-t-work').forEach((el) => {
-      gsap.from(el, {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 90%',
-          toggleActions: 'play none none none',
-        },
-        y: 60,
-        skewY: '-1',
-        autoAlpha: 0,
-        ease: 'Circ.easIn',
-        duration: 0.6,
-      })
+      gsap.set(el, { autoAlpha: 0 })
     })
+
+    // Register reveal elements when desktop, iPad
+    if (this.viewRect.width >= 768) {
+      const texts = gsap.utils.toArray('.js-anime-text')
+      const imgs = gsap.utils.toArray('.js-anime-img')
+      const imgTexts = gsap.utils.toArray('.js-anime-imgText')
+      // 桌機版順序：圖(imgs)-> 文(texts) -> 圖中的文(imagTexts)
+      setTimeout(() => {
+        gsap
+          .timeline()
+          .fromTo(
+            imgs,
+            {
+              y: 60,
+              autoAlpha: 0,
+            },
+            {
+              y: 0,
+              autoAlpha: 1,
+              stagger: 0.02,
+              ease: 'Circ.easIn',
+              duration: 1.2,
+            }
+          )
+          .fromTo(
+            texts,
+            {
+              y: 40,
+              autoAlpha: 0,
+            },
+            {
+              y: 0,
+              autoAlpha: 1,
+              stagger: 0.1,
+              ease: 'Circ.easIn',
+              duration: 1.2,
+            },
+            '0.8'
+          )
+          .fromTo(
+            imgTexts,
+            {
+              autoAlpha: 0,
+            },
+            {
+              autoAlpha: 1,
+              ease: 'Circ.easIn',
+              duration: 1.2,
+            },
+            '2'
+          )
+      }, 500)
+    } else {
+      // Register scroll trigger elements when mobile
+      setTimeout(() => {
+        gsap.utils.toArray('.js-scroll-t-work').forEach((el) => {
+          gsap.fromTo(
+            el,
+            {
+              y: 60,
+              skewY: '-1',
+              autoAlpha: 0,
+            },
+            {
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 90%',
+                toggleActions: 'play none none none',
+              },
+              y: 0,
+              skewY: '0',
+              autoAlpha: 1,
+              ease: 'Circ.easIn',
+              duration: 1.2,
+            }
+          )
+        })
+      }, 500)
+    }
+  },
+  methods: {
+    getViewRect() {
+      return {
+        width: Math.max(
+          document.documentElement.clientWidth,
+          window.innerWidth || 0
+        ),
+        height: Math.max(
+          document.documentElement.clientHeight,
+          window.innerHeight || 0
+        ),
+      }
+    },
   },
 }
 </script>
 
 <style lang="scss">
 .feature-work {
-  padding: 267px 45px 132px 45px;
+  padding: 131px 45px 132px 45px;
 
   @media screen and (max-width: 1399px) {
-    padding-top: 175px;
+    padding-top: 145px;
   }
 
   @media screen and (max-width: 767px) {
