@@ -1,8 +1,8 @@
 <template>
   <div class="page-work__members-wrapper">
     <img
-      class="page-work__member"
-      src="~/assets/images/member_k.png"
+      class="page-work__member member--k"
+      src="~/assets/images/member_k_serving.png"
       alt="Member Kevin"
     />
     <img
@@ -29,11 +29,17 @@ export default {}
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
+  align-items: flex-end;
   overflow: hidden;
   .page-work__member {
     width: 180px;
     height: 180px;
     margin: 0px -5px -10px -5px;
+  }
+  .member--k {
+    width: 210px;
+    height: 210px;
+    margin: 0px -18px -5px -22px;
   }
 
   @media screen and (max-width: 768px) {

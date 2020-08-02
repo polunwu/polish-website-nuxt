@@ -93,7 +93,8 @@ export default {
 
   .page-work__discuss-button {
     display: block;
-    background-color: $secondary-color;
+    background: transparent linear-gradient(241deg, #fff 0%, #fff 100%) 50% 50%
+      no-repeat padding-box;
     color: $primary-color;
     font-weight: $font-weight--medium;
     font-size: 24px;
@@ -102,6 +103,13 @@ export default {
     text-align: center;
     max-width: 780px;
     border-radius: 12px;
+  }
+
+  .page-work__discuss-button:hover {
+    background: transparent linear-gradient(241deg, #1423f4 0%, #f60002 100%)
+      50% 50% no-repeat padding-box;
+    background-size: 150% 200%;
+    color: $secondary-color;
   }
 
   @media screen and (max-width: 768px) {
