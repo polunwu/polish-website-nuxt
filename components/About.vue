@@ -18,7 +18,9 @@
             </p>
           </div>
           <div class="about__record js-scroll-t-about-tinderlikes">
-            <p class="record__score">{{ counter.tinderLikes }}+</p>
+            <p class="record__score">
+              {{ counter.tinderLikes }}<span class="js-plus">+</span>
+            </p>
             <p class="record__target record__target--tinder">
               Likes on Tinder ( per day )
             </p>
@@ -26,22 +28,22 @@
         </div>
         <div class="about__members-wrapper">
           <img
-            class="about__member about__member--d"
+            class="about__member about__member--d js-scroll-t-member"
             src="~/assets/images/member_d.png"
             alt="Member Doppler"
           />
           <img
-            class="about__member about__member--k"
+            class="about__member about__member--k js-scroll-t-member"
             src="~/assets/images/member_k.png"
             alt="Member Kevin"
           />
           <img
-            class="about__member about__member--h"
+            class="about__member about__member--h js-scroll-t-member"
             src="~/assets/images/member_h.png"
             alt="Member Hungmi"
           />
           <img
-            class="about__member about__member--p"
+            class="about__member about__member--p js-scroll-t-member"
             src="~/assets/images/member_p.png"
             alt="Member Polun"
           />
@@ -68,8 +70,26 @@ export default {
   },
   mounted() {
     this.registerCounterAnimations()
+    this.registerMemberAnimations()
   },
   methods: {
+    registerMemberAnimations() {
+      gsap.utils.toArray('.js-scroll-t-member').forEach((el) => {
+        gsap.fromTo(
+          el,
+          { autoAlpha: 0 },
+          {
+            scrollTrigger: {
+              trigger: el,
+              start: 'top 90%',
+              toggleActions: 'play none none none',
+            },
+            autoAlpha: 1,
+            duration: 0.8,
+          }
+        )
+      })
+    },
     registerCounterAnimations() {
       const animatedCounter = {
         ramens: 0,
@@ -83,8 +103,8 @@ export default {
           toggleActions: 'play none none none',
         },
         ramens: 200,
-        ease: 'Circ.easIn',
-        duration: 1.2,
+        ease: 'Circ.easOut',
+        duration: 1.8,
         onUpdate: () => {
           this.counter.ramens = animatedCounter.ramens.toFixed(0)
         },
@@ -96,25 +116,33 @@ export default {
           toggleActions: 'play none none none',
         },
         keyboards: 5,
-        ease: 'Circ.easIn',
-        duration: 0.8,
+        ease: 'Circ.easInOut',
+        duration: 2.7,
         onUpdate: () => {
           this.counter.keyboards = animatedCounter.keyboards.toFixed(0)
         },
       })
-      gsap.to(animatedCounter, {
-        scrollTrigger: {
-          trigger: '.js-scroll-t-about-tinderlikes',
-          start: 'top 100%',
-          toggleActions: 'play none none none',
-        },
-        tinderLikes: 99,
-        ease: 'Circ.easIn',
-        duration: 1,
-        onUpdate: () => {
-          this.counter.tinderLikes = animatedCounter.tinderLikes.toFixed(0)
-        },
-      })
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: '.js-scroll-t-about-tinderlikes',
+            start: 'top 100%',
+            toggleActions: 'play none none none',
+          },
+        })
+        .to(animatedCounter, {
+          tinderLikes: 99,
+          ease: 'Circ.easOut',
+          duration: 3.2,
+          onUpdate: () => {
+            this.counter.tinderLikes = animatedCounter.tinderLikes.toFixed(0)
+          },
+        })
+        .fromTo(
+          '.js-plus',
+          { autoAlpha: 0, display: 'none' },
+          { autoAlpha: 1, display: 'inline-block', delay: 0.15, duration: 0.01 }
+        )
     },
   },
 }
@@ -257,7 +285,7 @@ export default {
   }
   &__member--d {
     @media screen and (max-width: 767px) {
-      display: none;
+      display: none !important;
     }
   }
   &__member--h {
