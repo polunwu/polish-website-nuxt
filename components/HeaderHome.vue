@@ -175,7 +175,7 @@ export default {
         { dashoffset: 336 },
         {
           dashoffset: 0,
-          duration: 1,
+          duration: 1.5,
           ease: 'Power1.easeOut',
           onUpdate: () => {
             // 更新 data，並綁定到 svg#bar 的 style 上
@@ -188,7 +188,7 @@ export default {
         { autoAlpha: 0.1 },
         {
           autoAlpha: 1,
-          duration: 1,
+          duration: 1.5,
           ease: 'Power1.easeOut',
         },
         '0'
