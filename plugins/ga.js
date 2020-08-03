@@ -8,5 +8,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-PR8JZD5');
 
-
+  app.router.afterEach((to, from) => {
+    dataLayer.push({ event: 'pageview' })
+  })
 }
