@@ -112,13 +112,12 @@ export default {
     // 取得裝置寬高
     this.viewRect = this.getViewRect()
 
-    // 設定初始值
-    gsap.utils.toArray('.js-scroll-t-work').forEach((el) => {
-      gsap.set(el, { autoAlpha: 0 })
-    })
-
     // Register reveal elements when desktop, iPad
     if (this.viewRect.width >= 768) {
+      // 設定初始值
+      gsap.utils.toArray('.js-scroll-t-work').forEach((el) => {
+        gsap.set(el, { autoAlpha: 0 })
+      })
       const texts = gsap.utils.toArray('.js-anime-text')
       const imgs = gsap.utils.toArray('.js-anime-img')
       const imgTexts = gsap.utils.toArray('.js-anime-imgText')
@@ -168,6 +167,7 @@ export default {
             '2'
           )
       }, 500)
+    } else {
     }
   },
   methods: {
