@@ -190,6 +190,7 @@ export default {
 <style lang="scss">
 .feature-work {
   padding: 131px 45px 132px 45px;
+  user-select: none;
 
   @media screen and (max-width: 1399px) {
     padding-top: 145px;
