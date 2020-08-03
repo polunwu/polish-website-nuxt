@@ -7,14 +7,22 @@
       :client="work.client"
       :keywords="work.keywords"
       :cover-image-url="work.coverImageUrl"
+      :bg-color="work.bgColor"
+      :title-color="work.titleColor"
     />
     <div class="page-work__article-wrapper">
       <Paragraph :content="work.content[0]" />
       <ParagraphImage :url="work.paragraphImageUrl" />
-      <Quote :quote="work.quote" />
-      <FullWidthImage :url="work.fullWidthImageUrl[0]" />
       <Paragraph :content="work.content[1]" />
+      <FullWidthImage :url="work.fullWidthImageUrl[0]" />
+      <Paragraph :content="work.content[2]" />
       <FullWidthImage :url="work.fullWidthImageUrl[1]" />
+      <Paragraph :content="work.content[3]" />
+      <FullWidthImage :url="work.fullWidthImageUrl[2]" />
+      <Spacer />
+      <FullWidthImage :url="work.fullWidthImageUrl[3]" />
+      <Spacer />
+      <FullWidthImage :url="work.fullWidthImageUrl[4]" />
       <SeeMore :link="work.link" />
       <TechScope :scopes="work.scopes" />
     </div>
@@ -25,52 +33,58 @@
 <script>
 import HeaderWork from '@/components/HeaderWork.vue'
 import Paragraph from '@/components/Paragraph.vue'
-import Quote from '@/components/Quote.vue'
 import ParagraphImage from '@/components/ParagraphImage.vue'
 import FullWidthImage from '@/components/FullWidthImage.vue'
 import SeeMore from '@/components/SeeMore.vue'
 import TechScope from '@/components/TechScope.vue'
 import Members from '@/components/Members.vue'
+import Spacer from '@/components/Spacer.vue'
 
 export default {
   components: {
     HeaderWork,
     Paragraph,
-    Quote,
     ParagraphImage,
     FullWidthImage,
     SeeMore,
     TechScope,
     Members,
+    Spacer,
   },
   data() {
     return {
       work: {
-        id: 6,
-        numString: '06',
+        id: 1,
+        bgColor: '#FF6100',
+        titleColor: '#FFFFFF',
+        numString: '01',
         name: 'rawnfresh',
         title: '帶著走的電影院，影像作品展示、加速客戶溝通',
         category: 'Website',
-        client: '沙西米 RawNFresh',
-        keywords: 'Video Display',
+        client: '沙西米影像',
+        keywords: 'Viewing experience',
         thumbnailImageUrl: 'https://via.placeholder.com/615x346',
-        coverImageUrl: 'https://via.placeholder.com/615x346',
-        paragraphImageUrl: 'https://via.placeholder.com/780x450',
+        coverImageUrl: require('~/assets/images/p-sashimi/p-sashimi_cover.jpg'),
+        paragraphImageUrl: require('~/assets/images/p-sashimi/p-sashimi_work_0_780x450@2x.jpg'),
         fullWidthImageUrl: [
-          'https://via.placeholder.com/1280x1134',
-          'https://via.placeholder.com/1280x935',
+          require('~/assets/images/p-sashimi/p-sashimi_work_1.jpg'),
+          require('~/assets/images/p-sashimi/p-sashimi_work_2.jpg'),
+          require('~/assets/images/p-sashimi/p-sashimi_work_3.jpg'),
+          require('~/assets/images/p-sashimi/p-sashimi_work_4.jpg'),
+          require('~/assets/images/p-sashimi/p-sashimi_work_5.jpg'),
         ],
         content: [
-          '翻轉印象、探索傑作\n\n轉轉是囊括視覺創作各項領域的影像團隊，成員們揉合了各種特質，年輕、活力、創意、投入，在成立之初的三年之間，爆炸性地累積大量作品。\n\n設計轉轉團隊官網的過程，是一種多重發散與凝結的體驗，最後歸納出兩個執行重點：「翻轉」與「探索」。其一在於，以轉轉們（Shifters）心境上的轉變為契機，重新審視品牌定位，以釐清轉轉的視覺形象。我們抽取了轉轉成員們間高速協作、緊密契合的工作特質，具象化為ㄧ動作靈巧的精密機器，加上 SHIFT 的翻轉意涵，貫穿整個網站視覺主軸。翻轉，可以再翻轉。',
-          '其二，網站的功能性著重於「作品的呈現」，我們設計出「探索式」的體驗，讓使用者能像瀏覽地圖般，不分階層地探索所有作品，因為，每個作品與合作夥伴的重要程度都是同等分量的（當然我們也設計了不錯的分類標籤~ )。',
+          '歡迎來到影像創作者們的瀏覽場域\n\n我們在 2020 年與快速成長中的金曲 MV 團隊們密切合作。在一個接一個的影像製作空檔之間，我們與客戶反覆討論、推敲細節。我們梳理了沙西米團隊們實力累積下的豐富素材，設計出最大空間展示影像作品的網站體驗。\n\n沙西米之所以能有高品質的作品，是因一群各司其職的專業人士合作打造而成。我們設計了一個能呈現每位團員的工作角色、真實樣貌的互動方式，讓使用者能以「人」為出發點，選擇感興趣的成員，對其有更完整的認知。',
+          '這次是個很特別的合作，是個網站建置及品牌翻新的專案，我們從新定位了沙西米影像的品牌調性。經過數月的討論，我們將其定位在「新鮮」、「逆流而上」、「鮭魚」等，鮮明的意象。色彩計畫的策略上，我們選用了鮮豔的柳橙橘，文字及標誌的設計找到了日本風格的文字元素，當然，最吸睛的就是那「鮭魚頭」，我們團隊相信他會是非常有記憶點的存在，對品牌長遠期的發展會相當有幫助。',
+          '網站製作上，我們被客戶丟了許多業界中很棒的製作，經過一番參考轟炸後，當然，我們學習到了在台灣影像業界，商業合作客戶通常會在意以及期待的內容，我們透過這些討論，我們設計了針對B2B客戶的使用者體驗路徑，同時針對路徑中不同節點設計對應能夠「加深品牌印象」、「加強沈浸式觀影」的環節。我們覺得最有趣的一個環節莫過於，當進入網站時的 LOGO 展示以及有趣的同心圓動畫了吧！',
+          '成員 Members 頁面，人物的風格搭配鮮明的橘色，這正是經典電影猜火車（1996）的風格！我們團隊花費了相當多的時間在實驗及開發上，在 RWD（響應式設計）的彈性中找到可行的解方。我想這一頁也是讓用戶會為之驚豔的一個環節，「製作團隊」、「爆炸」、「相機」、「貓咪（？）」\n\n回到我們網站中最重要的環節「觀影體驗」，設計團隊依據品牌視覺調性，延伸設計了影片播放器中的 icon 元素，成果相當有趣。',
         ],
         quote: {
-          content:
-            '探索地圖式的呈現方式，傳達作品種類的「量」及「廣」，透過探索營造出有趣的體驗。',
-          by: 'Kevin 家豪',
-          job: 'Polish Design Art Director',
+          content: '',
+          by: '',
+          job: '',
         },
-        link: 'www.shiftstudioco.com',
+        link: 'rawnfresh.com.tw',
         scopes: {
           branding: ['品牌形象規劃', '品牌色彩計畫', '品牌視覺識別'],
           design: [
@@ -79,13 +93,13 @@ export default {
             '使用者體驗（UX）',
             '使用者介面設計（UI）',
           ],
-          development: ['使用者故事', '使用者體驗（UX）'],
+          development: ['前端工程開發', '後端工程開發', '特效製作'],
         },
       },
     }
   },
   head: {
-    title: 'Shift Studio 轉轉影像 - 磨人設計 | Polish Design',
+    title: '沙西米影像 - 磨人設計 | Polish Design',
   },
 }
 </script>
