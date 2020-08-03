@@ -67,7 +67,7 @@ export default {
         category: 'Website',
         client: '永齡基金會',
         keywords: 'Large Forum Agenda',
-        thumbnailImageUrl: 'https://via.placeholder.com/615x346',
+        thumbnailImageUrl: require('~/assets/images/p-trans/p-trans_cover.jpg'),
         coverImageUrl: require('~/assets/images/p-trans/p-trans_cover.jpg'),
         paragraphImageUrl: require('~/assets/images/p-trans/p-trans_work_0_780x450@2x.jpg'),
         fullWidthImageUrl: [

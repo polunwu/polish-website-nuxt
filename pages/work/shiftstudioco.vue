@@ -67,7 +67,7 @@ export default {
         category: 'Website',
         client: '轉轉影像事業',
         keywords: 'Work Display',
-        thumbnailImageUrl: 'https://via.placeholder.com/615x346',
+        thumbnailImageUrl: require('~/assets/images/p-shift/p-shift_cover.jpg'),
         coverImageUrl: require('~/assets/images/p-shift/p-shift_cover.jpg'),
         paragraphImageUrl: require('~/assets/images/p-shift/p-shift_work_0_780x450@2x.jpg'),
         fullWidthImageUrl: [

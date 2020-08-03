@@ -65,7 +65,7 @@ export default {
         category: 'Website',
         client: 'Wassup 挖砂貓砂',
         keywords: 'Landing Page',
-        thumbnailImageUrl: 'https://via.placeholder.com/615x346',
+        thumbnailImageUrl: require('~/assets/images/p-wassup/p-wassup_cover.png'),
         coverImageUrl: require('~/assets/images/p-wassup/p-wassup_cover.png'),
         paragraphImageUrl: require('~/assets/images/p-wassup/p-wassup_work_0_780x450@2x.jpg'),
         fullWidthImageUrl: [

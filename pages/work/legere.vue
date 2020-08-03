@@ -7,14 +7,18 @@
       :client="work.client"
       :keywords="work.keywords"
       :cover-image-url="work.coverImageUrl"
+      :bg-color="work.bgColor"
+      :title-color="work.titleColor"
     />
     <div class="page-work__article-wrapper">
       <Paragraph :content="work.content[0]" />
       <ParagraphImage :url="work.paragraphImageUrl" />
-      <Quote :quote="work.quote" />
+      <Spacer />
       <FullWidthImage :url="work.fullWidthImageUrl[0]" />
-      <Paragraph :content="work.content[1]" />
+      <Spacer />
       <FullWidthImage :url="work.fullWidthImageUrl[1]" />
+      <Spacer />
+      <FullWidthImage :url="work.fullWidthImageUrl[2]" />
       <SeeMore :link="work.link" />
       <TechScope :scopes="work.scopes" />
     </div>
@@ -25,52 +29,53 @@
 <script>
 import HeaderWork from '@/components/HeaderWork.vue'
 import Paragraph from '@/components/Paragraph.vue'
-import Quote from '@/components/Quote.vue'
 import ParagraphImage from '@/components/ParagraphImage.vue'
 import FullWidthImage from '@/components/FullWidthImage.vue'
 import SeeMore from '@/components/SeeMore.vue'
 import TechScope from '@/components/TechScope.vue'
 import Members from '@/components/Members.vue'
+import Spacer from '@/components/Spacer.vue'
 
 export default {
   components: {
     HeaderWork,
     Paragraph,
-    Quote,
     ParagraphImage,
     FullWidthImage,
     SeeMore,
     TechScope,
     Members,
+    Spacer,
   },
   data() {
     return {
       work: {
-        id: 4,
-        numString: '04',
+        id: 6,
+        bgColor: '#EDE5D8',
+        titleColor: '#000000',
+        numString: '06',
         name: 'legere',
         title: '顧問服務的催化劑，降低疑慮、增強信心',
         category: 'Website',
         client: 'Legere 里格',
-        keywords: 'Reservation guide',
-        thumbnailImageUrl: 'https://via.placeholder.com/615x346',
-        coverImageUrl: 'https://via.placeholder.com/615x346',
-        paragraphImageUrl: 'https://via.placeholder.com/780x450',
+        keywords: 'Landing Page',
+        thumbnailImageUrl: require('~/assets/images/p-legere/p-legere_cover.jpg'),
+        coverImageUrl: require('~/assets/images/p-legere/p-legere_cover.jpg'),
+        paragraphImageUrl: require('~/assets/images/p-legere/p-legere_work_0_780x450.jpg'),
         fullWidthImageUrl: [
-          'https://via.placeholder.com/1280x1134',
-          'https://via.placeholder.com/1280x935',
+          require('~/assets/images/p-legere/p-legere_work_1.jpg'),
+          require('~/assets/images/p-legere/p-legere_work_2.jpg'),
+          require('~/assets/images/p-legere/p-legere_work_3.jpg'),
         ],
         content: [
-          '翻轉印象、探索傑作\n\n轉轉是囊括視覺創作各項領域的影像團隊，成員們揉合了各種特質，年輕、活力、創意、投入，在成立之初的三年之間，爆炸性地累積大量作品。\n\n設計轉轉團隊官網的過程，是一種多重發散與凝結的體驗，最後歸納出兩個執行重點：「翻轉」與「探索」。其一在於，以轉轉們（Shifters）心境上的轉變為契機，重新審視品牌定位，以釐清轉轉的視覺形象。我們抽取了轉轉成員們間高速協作、緊密契合的工作特質，具象化為ㄧ動作靈巧的精密機器，加上 SHIFT 的翻轉意涵，貫穿整個網站視覺主軸。翻轉，可以再翻轉。',
-          '其二，網站的功能性著重於「作品的呈現」，我們設計出「探索式」的體驗，讓使用者能像瀏覽地圖般，不分階層地探索所有作品，因為，每個作品與合作夥伴的重要程度都是同等分量的（當然我們也設計了不錯的分類標籤~ )。',
+          '把台灣高端男裝帶進網路\n\n「訂製」是對細節的堅持，是否真的與快速的消費時代格格不入嗎？\n里格主理人 Issac 熟悉歐洲的訂製供應鏈，希望提供台灣的西服愛好者們一個全新的平衡點，我們不需在傳統手工訂製的漫長等待、與快速消費時尚的大量複製之間做抉擇。\n\n里格網站想表達一種觀點，原來預約制的訂製流程也可以很簡單、快速。我們可以清楚知道店主的品味，更重要的是，還可以參與社群、參加工作坊、持續與有相同愛好的人們交流。',
         ],
         quote: {
-          content:
-            '探索地圖式的呈現方式，傳達作品種類的「量」及「廣」，透過探索營造出有趣的體驗。',
-          by: 'Kevin 家豪',
-          job: 'Polish Design Art Director',
+          content: '',
+          by: '',
+          job: '',
         },
-        link: 'www.shiftstudioco.com',
+        link: 'www.legere.tw',
         scopes: {
           branding: ['品牌形象規劃', '品牌色彩計畫', '品牌視覺識別'],
           design: [
@@ -79,13 +84,13 @@ export default {
             '使用者體驗（UX）',
             '使用者介面設計（UI）',
           ],
-          development: ['使用者故事', '使用者體驗（UX）'],
+          development: ['前端工程開發', '特效製作'],
         },
       },
     }
   },
   head: {
-    title: 'Shift Studio 轉轉影像 - 磨人設計 | Polish Design',
+    title: 'Legere 里格 - 磨人設計 | Polish Design',
   },
 }
 </script>

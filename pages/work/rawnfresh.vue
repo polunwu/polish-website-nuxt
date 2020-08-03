@@ -63,7 +63,7 @@ export default {
         category: 'Website',
         client: '沙西米影像',
         keywords: 'Viewing experience',
-        thumbnailImageUrl: 'https://via.placeholder.com/615x346',
+        thumbnailImageUrl: require('~/assets/images/p-sashimi/p-sashimi_cover.jpg'),
         coverImageUrl: require('~/assets/images/p-sashimi/p-sashimi_cover.jpg'),
         paragraphImageUrl: require('~/assets/images/p-sashimi/p-sashimi_work_0_780x450@2x.jpg'),
         fullWidthImageUrl: [
