@@ -105,7 +105,9 @@
         </svg>
       </div>
       <div class="email">
-        <a href="mailto:Hello@polish-design.com">Hello@polish-design.com</a>
+        <a href="mailto:Hello@polish-design.com.tw"
+          >Hello@polish-design.com.tw</a
+        >
       </div>
       <nuxt-link
         to="/work"
@@ -316,7 +318,7 @@ export default {
   .email {
     position: fixed;
     left: 34px;
-    top: calc(100% - 209px);
+    top: calc(100% - 229px);
     color: $secondary-color;
     font-size: 15px;
     writing-mode: vertical-rl;

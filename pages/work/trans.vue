@@ -105,6 +105,7 @@ export default {
 
 <style lang="scss">
 .page-work {
+  user-select: none;
   &__article-wrapper {
     padding-top: 24px;
 
