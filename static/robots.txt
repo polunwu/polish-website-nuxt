@@ -1,3 +1,6 @@
-Sitemap: <https://polish-design.com.tw/sitemap.xml>
 User-agent: *
+Disallow: /
+
+User-agent: Googlebot
 Disallow:
+Sitemap: <https://polish-design.com.tw/sitemap.xml>
