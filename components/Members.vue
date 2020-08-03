@@ -1,14 +1,14 @@
 <template>
   <div class="page-work__members-wrapper">
     <img
-      class="page-work__member member--k"
-      src="~/assets/images/member_k_serving.png"
-      alt="Member Kevin"
-    />
-    <img
       class="page-work__member"
       src="~/assets/images/member_h.png"
       alt="Member Hungmi"
+    />
+    <img
+      class="page-work__member member--k"
+      src="~/assets/images/member_k_serving.png"
+      alt="Member Kevin"
     />
     <img
       class="page-work__member"

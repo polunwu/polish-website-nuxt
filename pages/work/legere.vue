@@ -51,6 +51,7 @@ export default {
         id: 6,
         bgColor: '#EDE5D8',
         titleColor: '#000000',
+        customCoverImgClass: 'header-work__cover-image--legere',
         numString: '06',
         name: 'legere',
         title: '顧問服務的催化劑，降低疑慮、增強信心',

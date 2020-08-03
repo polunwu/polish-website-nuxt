@@ -61,6 +61,7 @@ export default {
         id: 4,
         bgColor: '#83ECFC',
         titleColor: '#3B3736',
+        customCoverImgClass: 'header-work__cover-image--trans',
         numString: '04',
         name: 'trans',
         title: '大型論壇活動宣傳的最佳流程、節目資訊、訂票',

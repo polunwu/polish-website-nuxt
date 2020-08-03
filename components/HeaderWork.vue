@@ -120,12 +120,11 @@ export default {
 
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
     overflow: hidden;
 
     @media screen and (max-width: 768px) {
       justify-content: left;
-      align-items: flex-start;
     }
   }
   &__cover-image {
@@ -167,7 +166,7 @@ export default {
   // END OF CUSTOM COVER IMG CLASS
   &__content {
     max-width: 580px;
-    margin: 0px 35px 42px 35px;
+    margin: 156px 35px 42px 35px;
 
     @media screen and (max-width: 768px) {
       margin-top: 175px;

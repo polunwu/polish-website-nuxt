@@ -58,21 +58,21 @@ export default {
         id: 2,
         bgColor: '#FFCA27',
         titleColor: '#000000',
-        customCoverImgClass: 'header-work__cover-image--zuker',
+        customCoverImgClass: 'header-work__cover-image--real-estate',
         numString: '02',
-        name: 'zuker',
+        name: 'real-estate',
         title: '大房東的最佳秘書，把包租公變成品牌房東',
-        category: 'System',
-        client: 'Zuker',
-        keywords: 'System',
-        thumbnailImageUrl: require('~/assets/images/p-zuker/p-zuker_cover.jpg'),
-        coverImageUrl: require('~/assets/images/p-zuker/p-zuker_cover.jpg'),
-        paragraphImageUrl: require('~/assets/images/p-zuker/p-zuker_work_0_780x450@2x.jpg'),
+        category: 'Custom Software',
+        client: '客製租賃系統',
+        keywords: 'Rental system',
+        thumbnailImageUrl: require('~/assets/images/p-real-estate/p-real-estate_cover.jpg'),
+        coverImageUrl: require('~/assets/images/p-real-estate/p-real-estate_cover.jpg'),
+        paragraphImageUrl: require('~/assets/images/p-real-estate/p-real-estate_work_0_780x450@2x.jpg'),
         fullWidthImageUrl: [
-          require('~/assets/images/p-zuker/p-zuker_work_1.png'),
-          require('~/assets/images/p-zuker/p-zuker_work_2.png'),
-          require('~/assets/images/p-zuker/p-zuker_work_3.png'),
-          require('~/assets/images/p-zuker/p-zuker_work_4.png'),
+          require('~/assets/images/p-real-estate/p-real-estate_work_1.png'),
+          require('~/assets/images/p-real-estate/p-real-estate_work_2.png'),
+          require('~/assets/images/p-real-estate/p-real-estate_work_3.png'),
+          require('~/assets/images/p-real-estate/p-real-estate_work_4.png'),
         ],
         content: [
           '房東 Jason 的日常\n\n每天傳 LINE 給房客催繳房租，請水電師傅維修，處理房客的代墊收據，一筆一筆打進 Excel 進行對帳，對於是否有達到當初預估的投報率，Jason 心中並不是很確定，但下禮拜又要開始刊登招租廣告了，Jason 也不是很想去計算，只想趕快出租出去。這是目前管理三十間出租套房的 Jason 的生活。\n\n談不上勞累，但似乎也跟當初想像的包租公生活有點不一樣。最近朋友又在問要不要一起投資商圈旁邊整棟的二十間套房，於是 Jason 找到我們，打算對這整件事情做出一番改造。',
@@ -99,7 +99,7 @@ export default {
     }
   },
   head: {
-    title: '租賃系統 - 磨人設計 | Polish Design',
+    title: '客製租賃系統 - 磨人設計 | Polish Design',
   },
 }
 </script>

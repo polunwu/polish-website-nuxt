@@ -57,6 +57,7 @@ export default {
         id: 1,
         bgColor: '#FF6100',
         titleColor: '#FFFFFF',
+        customCoverImgClass: 'header-work__cover-image--rawnfresh',
         numString: '01',
         name: 'rawnfresh',
         title: '帶著走的電影院，影像作品展示、加速客戶溝通',

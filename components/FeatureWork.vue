@@ -42,15 +42,15 @@ export default {
           id: 2,
           bgColor: '#FFCA27',
           titleColor: '#000000',
-          customThumbnailImgClass: 'feature-work__thumbnail-img--zuker',
-          customCoverImgClass: 'header-work__cover-image--zuker',
+          customThumbnailImgClass: 'feature-work__thumbnail-img--real-estate',
+          customCoverImgClass: 'header-work__cover-image--real-estate',
           numString: '02',
-          name: 'zuker',
+          name: 'real-estate',
           title: '大房東的最佳秘書，把包租公變成品牌房東',
-          category: 'System',
-          client: 'Zuker',
-          keywords: 'System',
-          thumbnailImageUrl: require('~/assets/images/p-zuker/p-zuker_cover.jpg'),
+          category: 'Custom Software',
+          client: '客製租賃系統',
+          keywords: 'Rental system',
+          thumbnailImageUrl: require('~/assets/images/p-real-estate/p-real-estate_cover.jpg'),
         },
         {
           id: 3,
@@ -86,11 +86,11 @@ export default {
           customThumbnailImgClass: '',
           numString: '05',
           name: 'wassup',
-          title: 'KOL 的跨界篇章一觸即發，跨界經營、創業、販售',
+          title: 'KOL 的跨界篇章一觸即發，跨界經營、販售',
           category: 'Website',
           client: 'Wassup 挖砂貓砂',
           keywords: 'Landing Page',
-          thumbnailImageUrl: require('~/assets/images/p-wassup/p-wassup_cover.png'),
+          thumbnailImageUrl: require('~/assets/images/p-wassup/p-wassup_cover.jpg'),
         },
         {
           id: 6,
@@ -167,32 +167,6 @@ export default {
             },
             '2'
           )
-      }, 500)
-    } else {
-      // Register scroll trigger elements when mobile
-      setTimeout(() => {
-        gsap.utils.toArray('.js-scroll-t-work').forEach((el) => {
-          gsap.fromTo(
-            el,
-            {
-              y: 60,
-              skewY: '-1',
-              autoAlpha: 0,
-            },
-            {
-              scrollTrigger: {
-                trigger: el,
-                start: 'top 90%',
-                toggleActions: 'play none none none',
-              },
-              y: 0,
-              skewY: '0',
-              autoAlpha: 1,
-              ease: 'Circ.easIn',
-              duration: 1.2,
-            }
-          )
-        })
       }, 500)
     }
   },
@@ -303,7 +277,7 @@ export default {
     height: 100%;
   }
   // CUSTOM THUMBNAIL IMG CLASS: x position
-  &__thumbnail-img--zuker {
+  &__thumbnail-img--real-estate {
     @media screen and (max-width: 615px) {
       transform: translateX(40vw);
     }
