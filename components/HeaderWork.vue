@@ -137,8 +137,16 @@ export default {
       right: 0;
       width: 100vw;
     }
+  }
+  &__cover-image--zuker {
+    right: -3vw;
+    width: 45vw;
+    @media screen and (max-width: 767px) {
+      right: -67vw;
+      width: 150vw;
+    }
     @media screen and (max-width: 414px) and (min-aspect-ratio: 4/7) {
-      right: -10vw;
+      right: -50vw;
       width: 120vw;
     }
   }
