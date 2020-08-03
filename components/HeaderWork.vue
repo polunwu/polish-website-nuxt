@@ -7,7 +7,12 @@
           backgroundColor: bgColor,
         }"
       >
-        <img :src="coverImageUrl" alt="" class="header-work__cover-image" />
+        <img
+          :src="coverImageUrl"
+          alt=""
+          class="header-work__cover-image"
+          :class="[customImgClass]"
+        />
         <div
           ref="jsContent"
           class="header-work__content"
@@ -66,6 +71,10 @@ export default {
       type: String,
       default: '#fff',
     },
+    customImgClass: {
+      type: String,
+      default: '',
+    },
   },
   mounted() {
     const texts = this.$refs.jsContent.children
@@ -120,6 +129,20 @@ export default {
       width: 120vw;
     }
   }
+  // CUSTOM COVER IMG CLASS
+  &__cover-image--shiftstudioco {
+    right: 0;
+    width: 45vw;
+    @media screen and (max-width: 767px) {
+      right: 0;
+      width: 100vw;
+    }
+    @media screen and (max-width: 414px) and (min-aspect-ratio: 4/7) {
+      right: -10vw;
+      width: 120vw;
+    }
+  }
+  // END OF CUSTOM COVER IMG CLASS
   &__content {
     max-width: 580px;
     margin: 0px 35px 42px 35px;
