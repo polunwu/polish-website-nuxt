@@ -23,7 +23,7 @@ export default {
     leave(el, done) {
       setTimeout(() => {
         done()
-      }, 600)
+      }, 800)
     },
   },
 }

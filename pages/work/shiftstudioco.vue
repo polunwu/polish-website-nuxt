@@ -60,7 +60,7 @@ export default {
         id: 3,
         bgColor: '#EFD833',
         titleColor: '#3B3736',
-        customImgClass: 'header-work__cover-image--shiftstudioco',
+        customCoverImgClass: 'header-work__cover-image--shiftstudioco',
         numString: '03',
         name: 'shiftstudioco',
         title: '快速成長的新銳品牌值得擁有的獨特印象',

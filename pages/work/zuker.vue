@@ -58,7 +58,7 @@ export default {
         id: 2,
         bgColor: '#FFCA27',
         titleColor: '#000000',
-        customImgClass: 'header-work__cover-image--zuker',
+        customCoverImgClass: 'header-work__cover-image--zuker',
         numString: '02',
         name: 'zuker',
         title: '大房東的最佳秘書，把包租公變成品牌房東',

@@ -27,63 +27,83 @@ export default {
       works: [
         {
           id: 1,
+          bgColor: '#FF6100',
+          titleColor: '#FFFFFF',
+          customThumbnailImgClass: '',
           numString: '01',
-          name: 'shiftstudioco',
-          title: '快速成長的新銳品牌值得擁有的獨特印象',
+          name: 'rawnfresh',
+          title: '帶著走的電影院，影像作品展示、加速客戶溝通',
           category: 'Website',
-          client: 'Shift Studio 轉轉影像',
-          keywords: 'Work Display',
-          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
+          client: '沙西米影像',
+          keywords: 'Viewing experience',
+          thumbnailImageUrl: require('~/assets/images/p-sashimi/p-sashimi_cover.jpg'),
         },
         {
           id: 2,
+          bgColor: '#FFCA27',
+          titleColor: '#000000',
+          customThumbnailImgClass: 'feature-work__thumbnail-img--zuker',
+          customCoverImgClass: 'header-work__cover-image--zuker',
           numString: '02',
-          name: 'wassup',
-          title: 'KOL 的跨界篇章一觸即發，跨界經營、創業、販售',
-          category: 'Website',
-          client: 'Wassup 挖砂貓砂',
-          keywords: 'Landing Page',
-          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
-        },
-        {
-          id: 3,
-          numString: '03',
-          name: 'trans',
-          title: '大型論壇活動宣傳的最佳流程、節目資訊、訂票',
-          category: 'Website',
-          client: '永齡基金會 Trans',
-          keywords: 'Information & Action',
-          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
-        },
-        {
-          id: 4,
-          numString: '04',
-          name: 'legere',
-          title: '顧問服務的催化劑，降低疑慮、增強信心',
-          category: 'Website',
-          client: 'Legere 里格',
-          keywords: 'Reservation guide',
-          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
-        },
-        {
-          id: 5,
-          numString: '05',
           name: 'zuker',
           title: '大房東的最佳秘書，把包租公變成品牌房東',
           category: 'System',
           client: 'Zuker',
           keywords: 'System',
-          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
+          thumbnailImageUrl: require('~/assets/images/p-zuker/p-zuker_cover.jpg'),
+        },
+        {
+          id: 3,
+          bgColor: '#EFD833',
+          titleColor: '#3B3736',
+          customThumbnailImgClass: '',
+          customCoverImgClass: 'header-work__cover-image--shiftstudioco',
+          numString: '03',
+          name: 'shiftstudioco',
+          title: '快速成長的新銳品牌值得擁有的獨特印象',
+          category: 'Website',
+          client: '轉轉影像事業',
+          keywords: 'Work Display',
+          thumbnailImageUrl: require('~/assets/images/p-shift/p-shift_cover.jpg'),
+        },
+        {
+          id: 4,
+          bgColor: '#83ECFC',
+          titleColor: '#3B3736',
+          customThumbnailImgClass: '',
+          numString: '04',
+          name: 'trans',
+          title: '大型論壇活動宣傳的最佳流程、節目資訊、訂票',
+          category: 'Website',
+          client: '永齡基金會',
+          keywords: 'Large Forum Agenda',
+          thumbnailImageUrl: require('~/assets/images/p-trans/p-trans_cover.jpg'),
+        },
+        {
+          id: 5,
+          bgColor: '#019165',
+          titleColor: '#FFFFFF',
+          customThumbnailImgClass: '',
+          numString: '05',
+          name: 'wassup',
+          title: 'KOL 的跨界篇章一觸即發，跨界經營、創業、販售',
+          category: 'Website',
+          client: 'Wassup 挖砂貓砂',
+          keywords: 'Landing Page',
+          thumbnailImageUrl: require('~/assets/images/p-wassup/p-wassup_cover.png'),
         },
         {
           id: 6,
+          bgColor: '#EDE5D8',
+          titleColor: '#000000',
+          customThumbnailImgClass: '',
           numString: '06',
-          name: 'rawnfresh',
-          title: '帶著走的電影院，影像作品展示、加速客戶溝通',
+          name: 'legere',
+          title: '顧問服務的催化劑，降低疑慮、增強信心',
           category: 'Website',
-          client: '沙西米 RawNFresh',
-          keywords: 'Video Display',
-          thumbnailImageUrl: 'https://via.placeholder.com/615x346',
+          client: 'Legere 里格',
+          keywords: 'Landing Page',
+          thumbnailImageUrl: require('~/assets/images/p-legere/p-legere_cover.jpg'),
         },
       ],
     }
@@ -257,6 +277,7 @@ export default {
     }
   }
   &__thumbnail-wrapper {
+    position: relative;
     display: block;
     width: 615px;
     height: 346px;
@@ -274,7 +295,20 @@ export default {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
+  &__thumbnail-img {
+    height: 100%;
+  }
+  // CUSTOM THUMBNAIL IMG CLASS: x position
+  &__thumbnail-img--zuker {
+    @media screen and (max-width: 615px) {
+      transform: translateX(40vw);
+    }
+  }
+  // END OF CUSTOM THUMBNAIL IMG CLASS
   &__content {
     margin: 19px 0px 0px 5px;
     min-width: 336px;

@@ -4,11 +4,19 @@
       <div
         ref="jsThumbnail"
         class="feature-work__thumbnail js-scroll-t-work js-anime-img"
-        :style="{ backgroundImage: `url(${work.thumbnailImageUrl})` }"
+        :style="{ backgroundColor: work.bgColor }"
         @click="pageTargetClicked"
         @mouseenter="cardEnter"
         @mouseleave="cardLeave"
-      ></div>
+      >
+        <img
+          ref="jsThumbnailImg"
+          :src="work.thumbnailImageUrl"
+          :class="[work.customThumbnailImgClass]"
+          alt="work.name"
+          class="feature-work__thumbnail-img"
+        />
+      </div>
     </nuxt-link>
     <div ref="jsContent" class="feature-work__content">
       <span
@@ -93,9 +101,11 @@ export default {
     },
     thumbnailLeaving() {
       const jsContent = this.$refs.jsContent
+      const thumbnailImg = this.$refs.jsThumbnailImg
       const thumbnailWrapper = this.$refs.jsThumbnail.parentNode
       const thumbnailWrapperRect = thumbnailWrapper.getBoundingClientRect()
 
+      gsap.set(thumbnailWrapper, { zIndex: 100 })
       gsap
         .timeline()
         .to(thumbnailWrapper, {
@@ -107,10 +117,29 @@ export default {
             this.viewRect.height / 2 -
             thumbnailWrapperRect.y -
             thumbnailWrapperRect.height / 2,
-          scale: this.viewRect.height / thumbnailWrapperRect.height,
-          duration: 0.6,
+          scale: (this.viewRect.height / thumbnailWrapperRect.height) * 1.06,
+          duration: 1,
           ease: 'Back.easeInOut',
         })
+        .to(
+          thumbnailImg,
+          {
+            x: 0,
+            scale:
+              2 / ((this.viewRect.height / thumbnailWrapperRect.height) * 1.06),
+            duration: 0.6,
+            ease: 'Back.easeInOut',
+          },
+          '0'
+        )
+        .to(
+          thumbnailImg,
+          {
+            autoAlpha: 0,
+            duration: 0.3,
+          },
+          '0.3'
+        )
         .to(
           jsContent,
           {

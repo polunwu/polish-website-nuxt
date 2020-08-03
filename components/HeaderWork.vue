@@ -8,10 +8,11 @@
         }"
       >
         <img
+          ref="jsCoverImg"
           :src="coverImageUrl"
           alt=""
           class="header-work__cover-image"
-          :class="[customImgClass]"
+          :class="[customCoverImgClass]"
         />
         <div
           ref="jsContent"
@@ -78,13 +79,26 @@ export default {
   },
   mounted() {
     const texts = this.$refs.jsContent.children
-    gsap.from(texts, {
-      y: 20,
-      autoAlpha: 0,
-      duration: 1,
-      stagger: 0.2,
-      ease: 'Power4.easeOut',
-    })
+    const coverImg = this.$refs.jsCoverImg
+    gsap
+      .timeline()
+      .from(texts, {
+        y: 20,
+        autoAlpha: 0,
+        duration: 1,
+        stagger: 0.2,
+        ease: 'Power4.easeOut',
+      })
+      .from(
+        coverImg,
+        {
+          y: 80,
+          autoAlpha: 0,
+          duration: 2,
+          ease: 'Power4.easeOut',
+        },
+        '0.3'
+      )
   },
 }
 </script>

@@ -109,7 +109,7 @@ export default {
     background: transparent linear-gradient(241deg, #1423f4 0%, #f60002 100%)
       50% 50% no-repeat padding-box;
     background-size: 150% 200%;
-    color: $secondary-color;
+    // color: $secondary-color;
   }
 
   @media screen and (max-width: 768px) {
