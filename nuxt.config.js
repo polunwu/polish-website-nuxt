@@ -1,6 +1,6 @@
 export default {
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    baseUrl: 'https://polish-design.com.tw',
   },
   /*
    ** Nuxt rendering mode
