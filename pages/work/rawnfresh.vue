@@ -102,7 +102,7 @@ export default {
   head() {
     const baseUrl = process.env.baseUrl || 'http://localhost:3000'
     const description = `客戶：${this.work.client}｜類型：${this.work.category}`
-    const title = '作品案例｜' + this.work.title + ' - 磨人設計｜Polish Design'
+    const title = '作品案例｜' + this.work.title + ' - 磨人設計 Polish Design'
     const imgUrl = baseUrl + this.work.coverImageUrl
 
     return {
