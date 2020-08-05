@@ -72,7 +72,7 @@ export default {
       type: String,
       default: '#fff',
     },
-    customImgClass: {
+    customCoverImgClass: {
       type: String,
       default: '',
     },

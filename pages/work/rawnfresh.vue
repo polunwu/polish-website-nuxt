@@ -99,8 +99,60 @@ export default {
       },
     }
   },
-  head: {
-    title: '沙西米影像 - 磨人設計 | Polish Design',
+  head() {
+    const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
+    const description = `${this.work.title} | ${this.work.category} - ${this.work.client} | 磨人設計 - Polish Design`
+    const title = this.work.client + ' - 磨人設計 | Polish Design'
+    const imgUrl =
+      baseUrl + require('~/assets/images/p-sashimi/p-sashimi_cover.jpg')
+
+    return {
+      title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: description,
+        },
+        // og
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: title,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: description,
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: imgUrl,
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://polish-design.com.tw/work/' + this.work.name,
+        },
+        // twitter
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: title,
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content: description,
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: imgUrl,
+        },
+      ],
+    }
   },
 }
 </script>

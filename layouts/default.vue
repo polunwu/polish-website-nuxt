@@ -106,6 +106,16 @@ export default {
             'https://storage.googleapis.com/polish-design.com.tw/og-image.jpg',
         },
         {
+          hid: 'og:image:width',
+          property: 'og:image:width',
+          content: '1200',
+        },
+        {
+          hid: 'og:image:height',
+          property: 'og:image:height',
+          content: '630',
+        },
+        {
           hid: 'og:url',
           property: 'og:url',
           content: 'https://polish-design.com.tw/',
@@ -133,7 +143,7 @@ export default {
           content: '270',
         },
         { property: 'og:type', content: 'website' },
-        { property: 'og:site_name', content: '磨人設計 | Polish Design' },
+        { property: 'og:site_name', content: 'POLISHDESIGN' },
         { property: 'og:locale', content: 'zh_tw' },
         // twitter
         { property: 'twitter:card', content: 'summary_large_image' },
