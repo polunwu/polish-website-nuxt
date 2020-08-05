@@ -98,8 +98,59 @@ export default {
       },
     }
   },
-  head: {
-    title: '客製租賃系統 - 磨人設計 | Polish Design',
+  head() {
+    const baseUrl = process.env.baseUrl || 'http://localhost:3000'
+    const description = `客戶：${this.work.client}｜類型：${this.work.category}`
+    const title = '作品案例｜' + this.work.title + ' - 磨人設計｜Polish Design'
+    const imgUrl = baseUrl + this.work.coverImageUrl
+
+    return {
+      title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: description,
+        },
+        // og
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: title,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: description,
+        },
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: imgUrl,
+        },
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://polish-design.com.tw/work/' + this.work.name,
+        },
+        // twitter
+        {
+          hid: 'twitter:title',
+          property: 'twitter:title',
+          content: title,
+        },
+        {
+          hid: 'twitter:description',
+          property: 'twitter:description',
+          content: description,
+        },
+        {
+          hid: 'twitter:image',
+          property: 'twitter:image',
+          content: imgUrl,
+        },
+      ],
+    }
   },
 }
 </script>

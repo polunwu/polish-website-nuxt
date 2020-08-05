@@ -101,10 +101,9 @@ export default {
   },
   head() {
     const baseUrl = process.env.baseUrl || 'http://localhost:3000'
-    const description = `${this.work.title} | ${this.work.category} - ${this.work.client} | 磨人設計 - Polish Design`
-    const title = this.work.client + ' - 磨人設計 | Polish Design'
-    const imgUrl =
-      baseUrl + require('~/assets/images/p-sashimi/p-sashimi_cover.jpg')
+    const description = `客戶：${this.work.client}｜類型：${this.work.category}`
+    const title = '作品案例｜' + this.work.title + ' - 磨人設計｜Polish Design'
+    const imgUrl = baseUrl + this.work.coverImageUrl
 
     return {
       title,
