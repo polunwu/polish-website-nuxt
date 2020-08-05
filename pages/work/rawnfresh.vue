@@ -100,7 +100,7 @@ export default {
     }
   },
   head() {
-    const baseUrl = process.env.BASE_URL || 'http://localhost:3000'
+    const baseUrl = process.env.baseUrl || 'http://localhost:3000'
     const description = `${this.work.title} | ${this.work.category} - ${this.work.client} | 磨人設計 - Polish Design`
     const title = this.work.client + ' - 磨人設計 | Polish Design'
     const imgUrl =
