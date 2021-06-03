@@ -1,0 +1,11 @@
+.page-work {
+  user-select: none;
+  &__article-wrapper {
+    padding-top: 24px;
+    color: $paragraph-white;
+
+    @media screen and (max-width: 414px) {
+      padding-top: 20px;
+    }
+  }
+}

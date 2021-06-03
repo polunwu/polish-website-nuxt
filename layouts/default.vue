@@ -227,4 +227,5 @@ export default {
 
 <style lang="scss">
 @import '~/assets/scss/_general.scss';
+@import '~/assets/scss/_page-work.scss';
 </style>

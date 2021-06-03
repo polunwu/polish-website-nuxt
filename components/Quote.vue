@@ -62,7 +62,7 @@ export default {
       margin-top: 132px;
       max-width: 682px;
       padding-left: 25px;
-      border-left: 10px solid $secondary-color;
+      border-left: 10px solid $paragraph-white;
     }
     .page-work__qoute-info {
       margin-bottom: 101px;
@@ -82,7 +82,7 @@ export default {
       margin-top: 112px;
       max-width: 374px;
       padding-left: 20px;
-      border-left: 5px solid $secondary-color;
+      border-left: 5px solid $paragraph-white;
     }
     .page-work__qoute-info {
       margin-bottom: 105px;

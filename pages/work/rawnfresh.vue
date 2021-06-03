@@ -156,15 +156,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.page-work {
-  user-select: none;
-  &__article-wrapper {
-    padding-top: 24px;
-
-    @media screen and (max-width: 414px) {
-      padding-top: 20px;
-    }
-  }
-}
-</style>
+<style lang="scss"></style>
