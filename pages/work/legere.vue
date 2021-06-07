@@ -77,7 +77,7 @@ export default {
           by: '',
           job: '',
         },
-        link: 'www.legere.tw',
+        link: 'legere.com.tw',
         scopes: {
           branding: ['品牌形象規劃', '品牌色彩計畫', '品牌視覺識別'],
           design: [
