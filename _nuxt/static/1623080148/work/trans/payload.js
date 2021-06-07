@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/work/trans", {data:[{}],fetch:[],mutations:void 0});
