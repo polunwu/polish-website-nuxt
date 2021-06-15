@@ -55,18 +55,27 @@ export default {
   mounted() {
     // register scroll trigger elements
     gsap.utils.toArray('.js-scroll-t-footer').forEach((el) => {
-      gsap.from(el, {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
+      gsap.fromTo(
+        el,
+        {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+            once: true,
+          },
+          y: 20,
+          skewY: '-1',
+          autoAlpha: 0,
         },
-        y: 20,
-        skewY: '-1',
-        autoAlpha: 0,
-        ease: 'Circ.easIn',
-        duration: 0.6,
-      })
+        {
+          y: 0,
+          skewY: '0',
+          autoAlpha: 1,
+          ease: 'Circ.easIn',
+          duration: 0.6,
+        }
+      )
     })
   },
 }
