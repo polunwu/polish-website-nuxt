@@ -5,13 +5,7 @@
 </template>
 
 <script>
-// import { gsap } from 'gsap'
-import HeaderHome from '@/components/HeaderHome.vue'
-
 export default {
-  components: {
-    HeaderHome,
-  },
   data() {
     return {}
   },

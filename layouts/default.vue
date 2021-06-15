@@ -17,16 +17,8 @@
 
 <script>
 import { gsap } from 'gsap'
-import Loader from '@/components/Loader.vue'
-import Navbar from '@/components/Navbar.vue'
-import Footer from '@/components/Footer.vue'
 
 export default {
-  components: {
-    Loader,
-    Navbar,
-    Footer,
-  },
   data() {
     return {}
   },

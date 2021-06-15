@@ -31,28 +31,7 @@
 </template>
 
 <script>
-import HeaderWork from '@/components/HeaderWork.vue'
-import Paragraph from '@/components/Paragraph.vue'
-import Quote from '@/components/Quote.vue'
-import ParagraphImage from '@/components/ParagraphImage.vue'
-import FullWidthImage from '@/components/FullWidthImage.vue'
-import SeeMore from '@/components/SeeMore.vue'
-import TechScope from '@/components/TechScope.vue'
-import Members from '@/components/Members.vue'
-import Spacer from '@/components/Spacer.vue'
-
 export default {
-  components: {
-    HeaderWork,
-    Paragraph,
-    Quote,
-    ParagraphImage,
-    FullWidthImage,
-    SeeMore,
-    TechScope,
-    Members,
-    Spacer,
-  },
   data() {
     return {
       work: {
