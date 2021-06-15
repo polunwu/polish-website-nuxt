@@ -64,7 +64,9 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseUrl: 'https://blog.polish-design.com.tw/',
+  },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
