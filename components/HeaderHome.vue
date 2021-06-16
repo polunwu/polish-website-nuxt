@@ -112,7 +112,7 @@
       <nuxt-link
         to="/work"
         prefetch
-        style="position: fixed; width: 100vw; height: 20px;"
+        style="position: fixed; width: 100vw; height: 20px"
       ></nuxt-link>
     </div>
   </header>
