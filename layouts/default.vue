@@ -4,14 +4,16 @@
     <Navbar />
     <Nuxt />
     <Footer v-if="currentRouteName !== 'index'" />
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-PR8JZD5"
-        height="0"
-        width="0"
-        style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
+    <client-only>
+      <noscript
+        ><iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-PR8JZD5"
+          height="0"
+          width="0"
+          style="display: none; visibility: hidden"
+        ></iframe
+      ></noscript>
+    </client-only>
   </div>
 </template>
 
