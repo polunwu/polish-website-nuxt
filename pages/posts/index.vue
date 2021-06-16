@@ -8,7 +8,9 @@
       </code>
     </pre>
     <div v-for="post in posts" :key="post.id" class="post">
-      <h3>Title: {{ post.attributes.title }}</h3>
+      <NuxtLink :to="`/posts/${post.attributes.slug}`">
+        <h3>Title: {{ post.attributes.title }}</h3>
+      </NuxtLink>
       <h4>Author: {{ post.attributes.author }}</h4>
       <p>
         Tags:
@@ -29,26 +31,38 @@
 </template>
 
 <script>
+import { parseActionTextAttachment } from '../../utils/blog.utils'
 export default {
-  async asyncData({ $axios }) {
-    const postsUrl = 'https://blog.polish-design.com.tw/api/v1/posts'
-    const tagsUrl = 'https://blog.polish-design.com.tw/api/v1/tags'
-    const [postsResponse, tagsResponse] = await Promise.all([
-      $axios.get(postsUrl),
-      $axios.get(tagsUrl),
-    ])
-    console.log(postsResponse)
+  async asyncData({ $axios, error }) {
+    const postsUrl = '/api/v1/posts.json'
+    const tagsUrl = '/api/v1/tags.json'
+    try {
+      const [postsResponse, tagsResponse] = await Promise.all([
+        $axios.get(postsUrl),
+        $axios.get(tagsUrl),
+      ])
 
-    const { data: posts } = postsResponse.data
-    const { data: tags } = tagsResponse.data
+      const { data: posts } = postsResponse.data
+      const { data: tags } = tagsResponse.data
 
-    return {
-      posts,
-      tags,
+      return {
+        posts,
+        tags,
+      }
+    } catch (e) {
+      error(e) // Show the nuxt error page with the thrown error
     }
   },
   data() {
     return {}
+  },
+  mounted() {
+    this.parseContent()
+  },
+  methods: {
+    parseContent() {
+      parseActionTextAttachment(this.$el)
+    },
   },
 }
 </script>

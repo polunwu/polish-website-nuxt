@@ -45,6 +45,11 @@
                 Contact us
               </li></nuxt-link
             >
+            <nuxt-link to="/posts"
+              ><li ref="jsMenuBlog" class="navigation__link" @click="toggleNav">
+                Blog
+              </li></nuxt-link
+            >
           </ul>
         </div>
         <div ref="jsMenuInfo" class="navigation__info">
@@ -297,6 +302,7 @@ export default {
         jsMenuWork,
         jsMenuAbout,
         jsMenuContact,
+        jsMenuBlog,
         jsMenuInfo,
       } = this.$refs
       gsap
@@ -333,10 +339,16 @@ export default {
           '0.9'
         )
         .fromTo(
+          jsMenuBlog,
+          { autoAlpha: 0, y: 50 },
+          { autoAlpha: 1, y: 0 },
+          '1'
+        )
+        .fromTo(
           jsMenuInfo,
           { autoAlpha: 0, y: 50 },
           { autoAlpha: 1, y: 0 },
-          '0.10'
+          '1.1'
         )
     },
     leaveMenu(el, done) {
@@ -347,6 +359,7 @@ export default {
         jsMenuWork,
         jsMenuAbout,
         jsMenuContact,
+        jsMenuBlog,
         jsMenuInfo,
       } = this.$refs
       gsap
@@ -377,6 +390,12 @@ export default {
         )
         .fromTo(
           jsMenuContact,
+          { autoAlpha: 1, y: 0 },
+          { autoAlpha: 0, y: -150 },
+          '0.2'
+        )
+        .fromTo(
+          jsMenuBlog,
           { autoAlpha: 1, y: 0 },
           { autoAlpha: 0, y: -150 },
           '0.2'
