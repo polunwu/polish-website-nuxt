@@ -65,7 +65,7 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseUrl: 'https://blog.polish-design.com.tw/',
+    baseUrl: 'https://polish-blog-api.herokuapp.com',
   },
   /*
    ** Build configuration
@@ -74,6 +74,7 @@ export default {
   build: {
     // transpile libraries as ES6 modules
     transpile: ['gsap'],
+    vendor: ['axios'],
   },
   /*
    ** Style Resources for SASS global variables
