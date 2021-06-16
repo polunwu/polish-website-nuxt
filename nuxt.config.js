@@ -3,11 +3,6 @@ export default {
     baseUrl: 'https://polish-design.com.tw',
   },
   /*
-   ** Nuxt rendering mode
-   ** See https://nuxtjs.org/api/configuration-mode
-   */
-  mode: 'universal',
-  /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
    */
@@ -74,7 +69,6 @@ export default {
   build: {
     // transpile libraries as ES6 modules
     transpile: ['gsap'],
-    vendor: ['axios'],
   },
   /*
    ** Style Resources for SASS global variables
