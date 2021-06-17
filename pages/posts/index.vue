@@ -14,11 +14,13 @@
       <h4>Author: {{ post.attributes.author }}</h4>
       <p>
         Tags:
-        <span v-for="tag in post.attributes.tags" :key="tag">{{ tag }}</span>
+        <span v-for="tag in post.attributes.tags" :key="tag" class="tag">{{
+          tag
+        }}</span>
       </p>
       <p>Update at: {{ new Date(post.attributes.updated_at) }}</p>
       <p>Published at: {{ new Date(post.attributes.published_at) }}</p>
-      <p v-html="post.attributes.content"></p>
+      <p v-html="post.attributes.content_html"></p>
     </div>
     <hr />
     <p>Tags:</p>
@@ -32,6 +34,8 @@
 
 <script>
 import { parseActionTextAttachment } from '../../utils/blog.utils'
+import Prism from '~/plugins/prism'
+
 export default {
   async asyncData({ $axios, error }) {
     const postsUrl = '/api/v1/posts.json'
@@ -41,10 +45,8 @@ export default {
         $axios.get(postsUrl),
         $axios.get(tagsUrl),
       ])
-
       const { data: posts } = postsResponse.data
       const { data: tags } = tagsResponse.data
-
       return {
         posts,
         tags,
@@ -54,15 +56,14 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      posts: [],
+      tags: [],
+    }
   },
   mounted() {
-    this.parseContent()
-  },
-  methods: {
-    parseContent() {
-      parseActionTextAttachment(this.$el)
-    },
+    parseActionTextAttachment(this.$el)
+    Prism.highlightAll()
   },
 }
 </script>
@@ -76,5 +77,13 @@ export default {
   padding: 20px;
   background-color: #212324;
   border-radius: 10px;
+}
+.tag {
+  padding: 4px 8px;
+  background: #eee;
+  color: #000;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
 }
 </style>
