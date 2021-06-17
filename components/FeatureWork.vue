@@ -171,7 +171,6 @@ export default {
             '2'
           )
       }, 500)
-    } else {
     }
   },
   methods: {
